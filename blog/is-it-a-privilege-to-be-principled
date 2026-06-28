@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>is it a privilege to be principled</title>
+  <meta name="author" content="Muskan Hashim" />
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background: #fff;
+      color: #111;
+      max-width: 640px;
+      margin: 80px auto;
+      padding: 0 24px;
+    }
+    h1 {
+      font-size: 1.4rem;
+      font-weight: normal;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .date {
+      font-size: 0.85rem;
+      color: #999;
+      margin-bottom: 48px;
+      display: block;
+    }
+    p {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1.4em;
+    }
+    .back {
+      display: block;
+      margin-top: 64px;
+      font-size: 0.85rem;
+      color: #999;
+      text-decoration: none;
+    }
+    .back:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>is it a privilege to be principled</h1>
+  <span class="date">June 2026</span>
+
+  <p>
+    In a way it is like asking if art is only for the elite. 
+  </p>
+
+  <p>
+    For the longest time, trying to survive, I thought that principles and deep thinking were a fortune reserved for those who had time to ponder over ‘why live another year’ instead of ‘how to live another day’.  
+  </p>
+
+  <p>
+    I’m starting to think punishing and pushing down my inherent faculties for inquisitive thought were not a survival mechanism but a desperate bid to try fitting in among strangers who seemingly valued instant entertainment over lasting depth.
+
+  </p>
+Surely, there was merit in my frantic abandon of emotions attached to a desire for identity, principles, belonging, and the desire to be right in my own way. It allowed me liberties to not be tied to essential stipulations of the human condition that I thought made people ‘too rigid’ to act in their best interest.
+ <p>
+But surviving is not living. I can confirm, it is easier to make friends as a shallow individual who stands for nothing and everything at the same time. You become easier to consume. The world doesn’t need more leaders, they say, but believers in the leaders who have emerged victorious over ‘weaker’ strains of thoughts and ways of life.
+ </p>
+There are no weak belief systems because part of the inherent beauty of the design of the human condition is the fact that despite the resemblances in our innate tendencies, collective nature, and scale/scope of emotions, each individual life diverges in its own beautiful trajectory, similar yet so incomprehensibly different. And thus, all subsequently emerging belief systems reflect not right or wrong, but a sum of what has shaped one’s experiences. 
+
+ </p>
+Naturally, those who engage in deep thought question and challenge their beliefs to be accommodating of universal experiences, but the lack thereof does not invalidate any strong emotions or personal belief systems. 
+
+ </p>
+I used to debate if it was too irrational to be brave enough to harbor beliefs and opinions. I can’t find myself to be able to push mine down anymore.
+ </p>
+
+  <a class="back" href="index.html">← all posts</a>
+
+</body>
+</html>
