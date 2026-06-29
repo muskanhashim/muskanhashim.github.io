@@ -1,0 +1,88 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>to the woman who almost didn't make it</title>
+  <meta name="author" content="muskan hashim" />
+  <style>
+    body {
+      font-family: monospace;
+      background: #fff;
+      color: #111;
+      max-width: 640px;
+      margin: 80px auto;
+      padding: 0 24px;
+    }
+    h1 {
+      font-size: 1.4rem;
+      font-weight: normal;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .date {
+      font-size: 0.85rem;
+      color: #999;
+      margin-bottom: 48px;
+      display: block;
+    }
+    p {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1.4em;
+    }
+    .back {
+      display: block;
+      margin-top: 64px;
+      font-size: 0.85rem;
+      color: #999;
+      text-decoration: none;
+    }
+    .back:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>to the woman who almost didn't make it</h1>
+  <span class="date">on a quiet day in june 2026</span>
+
+  <p>
+    to the woman questioning whether she should, or even ever could, survive the abusive relationship she finds herself within:
+  </p>
+
+  <p>
+    not all days are bad. he doesn’t hit you every day. hell, some days even feel… pleasant. when his mood is good, or when he hasn’t had so much alcohol, just yet. when he can’t remember all of the things he hates about you, or everything you ever did wrong.
+  </p>
+
+  <p>
+    and even if it might seem like a lie when i tell you that you’ll be happier outside of that cage, i promise you won’t believe me unless you experience it yourself. i promise you’ll smile again, and you’ll laugh again—from the bottom of your heart—just like you used to once, even though you might have forgotten what that feels like.
+  </p>
+
+  <p>
+    and i promise the only question ringing in your head then would be asking yourself why you stayed for even a second longer. but when you’re out of it, you won’t have the time to ever address that question again: you’d be too busy living.
+  </p>
+
+  <p>
+    sometimes, you may see women stuck in dynamics you were all too familiar with, once. you may urge and hope they find the strength you did to take the leap. as much as i’d like to believe it, not everyone makes it out.
+  </p>
+
+  <p>
+    and you’d know that, which is why the people on your daily bus don’t realize why you’re smiling ear to ear every single day during your simple daily commute to work. why your friends don’t realize you light up and get excited about every small thing: because you’re living a life that was almost taken away from you. you’re existing in a timeline that almost never happened.
+  </p>
+
+  <p>
+    you’re living every day as a person who could’ve died, and so every day, and every moment that you live, no matter how challenging or intense it may appear, can never begin to amount to anything you’ve already been through. and so you smile, in the quiet knowing of this unshakable belief within your own strength, and the fact that you made it out alive.
+  </p>
+
+  <p>
+    dedicated to a version of myself who almost didn’t make it.
+  </p>
+
+  <a class="back" href="index.html">← all posts</a>
+
+</body>
+</html>
+```
