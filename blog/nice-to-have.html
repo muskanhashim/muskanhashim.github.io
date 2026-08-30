@@ -26,10 +26,22 @@
       margin-bottom: 48px;
       display: block;
     }
-    p {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
       font-size: 1rem;
       line-height: 1.8;
-      margin-bottom: 1.4em;
+      margin-bottom: 0.8em;
+      padding-left: 1.2em;
+      position: relative;
+    }
+    li::before {
+      content: "-";
+      position: absolute;
+      left: 0;
     }
     .back {
       display: block;
@@ -48,49 +60,19 @@
   <h1>nice to have</h1>
   <span class="date">august 2026</span>
 
-  <p>
-    - knowing that someone's love isn't conditional on your productivity
-  </p>
-
-  <p>
-    - having somewhere you can go when you're exhausted
-  </p>
-
-  <p>
-    - someone noticing that you're struggling
-  </p>
-
-  <p>
-    - someone cooking for you without you having to ask
-  </p>
-
-  <p>
-    - being allowed to be incompetent for a day
-  </p>
-
-  <p>
-    - someone saying “i've got it”
-  </p>
-
-  <p>
-    - being cared for when you're sick
-  </p>
-
-  <p>
-    - financial/material security
-  </p>
-
-  <p>
-    - physical affection
-  </p>
-
-  <p>
-    - being treated as someone's kid rather than as an independent adult
-  </p>
-
-  <p>
-    - having a place where you don't have to perform
-  </p>
+  <ul>
+    <li>knowing that someone's love isn't conditional on your productivity</li>
+    <li>having somewhere you can go when you're exhausted</li>
+    <li>someone noticing that you're struggling</li>
+    <li>someone cooking for you without you having to ask</li>
+    <li>being allowed to be incompetent for a day</li>
+    <li>someone saying “i've got it”</li>
+    <li>being cared for when you're sick</li>
+    <li>financial/material security</li>
+    <li>physical affection</li>
+    <li>being treated as someone's kid rather than as an independent adult</li>
+    <li>having a place where you don't have to perform</li>
+  </ul>
 
   <a class="back" href="index.html">← all posts</a>
 
