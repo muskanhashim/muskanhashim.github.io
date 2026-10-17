@@ -22,25 +22,30 @@
       font-family: var(--serif);
       background: var(--bg);
       color: var(--ink);
-      padding: 80px 24px 96px;
+      padding: 56px 32px 96px;
       -webkit-font-smoothing: antialiased;
     }
 
-    .page { max-width: 1140px; margin: 0 auto; }
+    .page { width: 100%; }
 
     h1 {
       font-size: 1.1rem;
       font-weight: normal;
       letter-spacing: 0.02em;
-      margin-bottom: 10px;
+    }
+
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 56px;
     }
 
     .elsewhere {
-      display: block;
-      font-size: 0.85rem;
-      color: var(--muted);
+      font-size: 0.95rem;
+      color: var(--ink);
       text-decoration: none;
-      margin-bottom: 64px;
     }
 
     .elsewhere:hover { color: var(--accent); }
@@ -84,10 +89,10 @@
       background: var(--bg);
       color: var(--ink);
       text-decoration: none;
-      padding: 14px 18px 16px;
+      padding: 12px 16px 13px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
       min-width: 0;
       overflow: hidden;
       transition: background 140ms ease;
@@ -111,10 +116,10 @@
     .back:hover { color: var(--accent); }
 
     @media (max-width: 760px) {
-      body { padding: 48px 18px 72px; }
+      body { padding: 40px 18px 72px; }
       .seam { margin: 56px 0 28px; }
       .row { flex-wrap: wrap; height: auto !important; }
-      .row > * { flex: 1 1 46% !important; min-height: 132px; }
+      .row > * { flex: 1 1 46% !important; min-height: 112px; }
     }
 
     @media (max-width: 440px) {
@@ -130,9 +135,10 @@
 
   <div class="page">
 
-    <h1>blog</h1>
-
-    <a class="elsewhere" href="/photos/">photos &rarr;</a>
+    <div class="head">
+      <h1>blog</h1>
+      <a class="elsewhere" href="/photos/">photos &rarr;</a>
+    </div>
 
     <div class="wall" id="wall"></div>
 
@@ -187,9 +193,8 @@
     // a title only gets a size it can carry in the cell it landed in
     function titleSize(title, width, height) {
       var n = title.length;
-      var sizes = n <= 14 ? [20, 25, 31] : n <= 24 ? [17, 21, 26] : n <= 34 ? [16, 19, 23] : [15, 17, 20];
-      var size = pick(sizes);
-      var room = Math.max(1, (width - 38) * (height - 56));
+      var size = Math.round(Math.min(44, Math.max(16, height * rnd(0.26, 0.40))));
+      var room = Math.max(1, (width - 34) * (height - 42));
       while (size > 14 && n * size * size * 0.46 > room) size -= 1;
       return size;
     }
@@ -222,8 +227,12 @@
         }
 
         // cells in this row, and how tall the row is: both drawn fresh each time
-        var cells = queue.length <= 2 ? queue.length : Math.min(queue.length, 2 + Math.floor(Math.random() * 3));
-        var height = Math.round(rnd(140, 236));
+        // cells follow the real width, so a wide screen gets more per row
+        // instead of a few very wide tiles with air in them
+        var target = rnd(290, 430);
+        var cells = queue.length <= 2 ? queue.length
+                  : Math.max(2, Math.min(queue.length, 6, Math.round(full / target)));
+        var height = Math.round(rnd(96, 172));
         var row = el("div", "row");
         row.style.height = height + "px";
 
@@ -234,7 +243,7 @@
         for (i = 0; i < cells && queue.length; i++) {
           var w = Math.round(full * weights[i] / sum);
           // stacking eats two posts, so only do it while every later cell still has one
-          var stack = cells <= 3 && height > 176 && queue.length >= cells - i + 1 && Math.random() < 0.38;
+          var stack = cells <= 3 && height > 148 && queue.length >= cells - i + 1 && Math.random() < 0.38;
 
           if (stack) {
             var box = el("div", "stack");
@@ -251,6 +260,22 @@
 
         host.appendChild(row);
       }
+
+      shrinkToFit(host);
+    }
+
+    // the estimate above is only a guess: measure each tile and step the type
+    // down until the title actually fits, so nothing is ever cut off
+    function shrinkToFit(host) {
+      Array.prototype.forEach.call(host.querySelectorAll("a"), function (a) {
+        var t = a.querySelector(".t");
+        var size = parseFloat(t.style.fontSize);
+        var guard = 0;
+        while (a.scrollHeight > a.clientHeight + 1 && size > 12 && guard++ < 40) {
+          size -= 1;
+          t.style.fontSize = size + "px";
+        }
+      });
     }
 
     function renderWall() {
