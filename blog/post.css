@@ -1,0 +1,182 @@
+:root {
+  --bg: #ffffff;
+  --ink: #111111;
+  --soft: #4a4a4a;
+  --muted: #999999;
+  --rule: #e8e8e8;
+  --accent: #e0218a;
+  --serif: Georgia, "Times New Roman", serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --measure: 62ch;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--serif);
+  background: var(--bg);
+  color: var(--ink);
+  padding: 56px 32px 96px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- the same header line the index and gallery carry ---------- */
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  padding-bottom: 12px;
+  margin-bottom: 72px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.head a {
+  font-size: 1.1rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.head a:hover { color: var(--accent); }
+
+a:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
+
+/* ---------- the piece ---------- */
+
+article { max-width: var(--measure); margin: 0 auto; }
+
+h1 {
+  font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+  font-weight: normal;
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+  text-wrap: balance;
+}
+
+.date {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 52px;
+}
+
+p {
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  margin-bottom: 1.35em;
+}
+
+/* the opening line carries the piece, so it is set a shade larger */
+.lede { font-size: 1.2rem; line-height: 1.68; }
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+article a:hover { color: var(--accent); }
+
+b, strong { font-weight: bold; }
+s { text-decoration-thickness: 1px; color: var(--soft); }
+
+/* an addition written later, set apart rather than merged in */
+.update {
+  margin-top: 56px;
+  padding-left: 22px;
+  border-left: 1px solid var(--rule);
+  color: var(--soft);
+}
+
+.update p { font-size: 1rem; }
+
+.update-date {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.back {
+  display: block;
+  max-width: var(--measure);
+  margin: 72px auto 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.back:hover { color: var(--accent); }
+
+/* ---------- treatments, one per kind of piece ---------- */
+
+/* a single sentence deserves the whole page */
+.single { --measure: 24ch; }
+
+.single article {
+  min-height: 46vh;
+  display: flex;
+  align-items: center;
+}
+
+.single p {
+  font-size: clamp(1.9rem, 5.5vw, 3rem);
+  line-height: 1.26;
+  margin: 0;
+}
+
+/* short lines that are each their own thought: give them air */
+.fragments p {
+  font-size: 1.2rem;
+  line-height: 1.62;
+  margin-bottom: 2em;
+}
+
+.fragments .lede { font-size: 1.2rem; }
+
+/* discrete notes, ruled apart so they read as separate */
+.aphorisms { --measure: 58ch; }
+
+.aphorisms p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  padding-bottom: 1.7em;
+  margin-bottom: 1.7em;
+  border-bottom: 1px solid var(--rule);
+}
+
+.aphorisms p:last-of-type { border-bottom: 0; }
+
+/* written to someone: slower leading, a narrower column */
+.letter { --measure: 56ch; }
+.letter p { line-height: 1.95; }
+
+/* a dedication is not the first paragraph of the essay, it is a threshold */
+.dedication p:first-of-type {
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--soft);
+  padding-bottom: 1.8em;
+  margin-bottom: 2.2em;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* this one argues with a machine, so it is set like one */
+.terminal { --measure: 68ch; }
+.terminal article { font-family: var(--mono); }
+.terminal h1 { font-family: var(--mono); font-size: clamp(1.3rem, 2.6vw, 1.7rem); }
+.terminal p { font-size: 0.95rem; line-height: 1.85; }
+.terminal .lede { font-size: 1rem; }
+.terminal .date, .terminal .back { font-family: var(--mono); }
+
+@media (max-width: 620px) {
+  body { padding: 40px 18px 72px; }
+  .head { margin-bottom: 48px; }
+  .date { margin-bottom: 36px; }
+  p { font-size: 1.02rem; }
+  .lede, .fragments p { font-size: 1.12rem; }
+}
