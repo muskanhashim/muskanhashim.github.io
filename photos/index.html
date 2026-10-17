@@ -13,6 +13,7 @@
       --rule: #e8e8e8;
       --accent: #c2527c;
       --serif: Georgia, "Times New Roman", serif;
+      --h: 240;
       --scale: 1;
     }
 
@@ -22,11 +23,11 @@
       font-family: var(--serif);
       background: var(--bg);
       color: var(--ink);
-      padding: 80px 24px 96px;
+      padding: 56px 32px 96px;
       -webkit-font-smoothing: antialiased;
     }
 
-    .page { max-width: 1140px; margin: 0 auto; }
+    .page { width: 100%; }
 
     h1 {
       font-size: 1.1rem;
@@ -52,14 +53,14 @@
 
     a:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
 
-    .row {
+    .strip {
       display: flex;
-      gap: 14px;
-      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 16px;
       align-items: flex-start;
     }
 
-    .row img {
+    .strip img {
       height: calc(var(--h) * var(--scale) * 1px);
       width: auto;
       display: block;
@@ -80,10 +81,10 @@
     @media (max-width: 860px)  { :root { --scale: 0.58; } }
 
     @media (max-width: 620px) {
-      body { padding: 48px 18px 72px; }
+      body { padding: 40px 18px 72px; }
       .head { margin-bottom: 36px; }
-      .row { flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
-      .row img { height: auto; width: calc(50% - 5px); }
+      .strip { gap: 10px; }
+      .strip img { height: auto; width: calc(50% - 5px); }
     }
   </style>
 </head>
@@ -96,51 +97,39 @@
       <a class="elsewhere" href="/blog/">blog &rarr;</a>
     </div>
 
-    <div class="row" style="--h: 270">
-      <img src="img/p12.webp" width="1050" height="1400" alt="A turquoise river running through a narrow gorge, with a walkway cut into the rock." decoding="async">
-      <img src="img/p02.webp" width="1050" height="1400" alt="A breakfast bowl of fried egg, bread, tomatoes and potatoes on a yellow table." decoding="async">
-      <img src="img/p30.webp" width="1050" height="1400" alt="An empty city street at first light, tram wires overhead." decoding="async">
-      <img src="img/p11.webp" width="1050" height="1400" alt="A bouquet of pink roses and baby's breath resting on a bicycle." decoding="async">
-    </div>
-    <div class="row" style="--h: 225">
-      <img src="img/p23.webp" width="1121" height="1400" alt="A smartwatch in the dark showing three hours and twenty-eight minutes of sleep." decoding="async">
-      <img src="img/p26.webp" width="1050" height="1400" alt="Sunrise over a misted valley seen through a window, a plate of watermelon on the sill." decoding="async">
-      <img src="img/p03.webp" width="1050" height="1400" alt="A crate of striped decorative gourds outside a supermarket, beside a bucket of flowers." loading="lazy" decoding="async">
-      <img src="img/p15.webp" width="1050" height="1400" alt="Someone in a blue hood standing under trees in bright sun, face turned away." loading="lazy" decoding="async">
-      <img src="img/p13.webp" width="1050" height="1400" alt="A city bus at night with Feierabend on its destination sign." loading="lazy" decoding="async">
-    </div>
-    <div class="row" style="--h: 300">
-      <img src="img/p24.webp" width="1050" height="1400" alt="Cows grazing in a green pasture below a mountain, seen through a window." loading="lazy" decoding="async">
-      <img src="img/p07.webp" width="1050" height="1400" alt="A bowl of roast pumpkin, chicken and greens on a yellow table." loading="lazy" decoding="async">
-      <img src="img/p21.webp" width="1050" height="1400" alt="A bonfire burning in a metal pit at night, people sitting around it." loading="lazy" decoding="async">
-      <img src="img/p29.webp" width="1050" height="1400" alt="An aeroplane wing above the clouds at sunset, seen from the window seat." loading="lazy" decoding="async">
-    </div>
-    <div class="row" style="--h: 240">
-      <img src="img/p18.webp" width="1050" height="1400" alt="A supermarket freezer pack of creamed spinach advertising high protein." loading="lazy" decoding="async">
-      <img src="img/p06.webp" width="1050" height="1400" alt="A stone fountain standing in an empty park under old trees." loading="lazy" decoding="async">
-      <img src="img/p09.webp" width="1050" height="1400" alt="Two hands on the handlebars of a pink bicycle." loading="lazy" decoding="async">
-      <img src="img/p25.webp" width="1050" height="1400" alt="A mountain restaurant with snow-covered peaks filling the windows." loading="lazy" decoding="async">
-      <img src="img/p32.webp" width="1050" height="1400" alt="A bottle of gingerbread-flavoured cola on a shop shelf." loading="lazy" decoding="async">
-    </div>
-    <div class="row" style="--h: 210">
-      <img src="img/p05.webp" width="1050" height="1400" alt="An outdoor bar at night lit in red and pink, empty chairs in the foreground." loading="lazy" decoding="async">
-      <img src="img/p16.webp" width="1050" height="1400" alt="A desk with a laptop, a water bottle and a wrist in frame." loading="lazy" decoding="async">
-      <img src="img/p27.webp" width="1050" height="1400" alt="Rain on a train window, fog sitting over the hills outside." loading="lazy" decoding="async">
-      <img src="img/p04.webp" width="1050" height="1400" alt="A hand holding a film case in front of a crowded bookshelf." loading="lazy" decoding="async">
-      <img src="img/p28.webp" width="1050" height="1400" alt="A cappuccino held above a wooden table, open fields beyond." loading="lazy" decoding="async">
-      <img src="img/p19.webp" width="1050" height="1400" alt="A painted festival tent at night with a crowd outside its doors." loading="lazy" decoding="async">
-    </div>
-    <div class="row" style="--h: 285">
-      <img src="img/p10.webp" width="1050" height="1400" alt="A workshop poster on a desk, covered in handwriting and sticky notes." loading="lazy" decoding="async">
-      <img src="img/p01.webp" width="1050" height="1400" alt="An empty beer-garden table with a coffee cup and the umbrellas closed." loading="lazy" decoding="async">
-      <img src="img/p22.webp" width="1050" height="1400" alt="A smartwatch showing a photograph, held up in a kitchen." loading="lazy" decoding="async">
-    </div>
-    <div class="row" style="--h: 230">
-      <img src="img/p31.webp" width="1400" height="1050" alt="Green crates of pumpkins and squash in a supermarket aisle." loading="lazy" decoding="async">
-      <img src="img/p20.webp" width="1050" height="1400" alt="Someone holding a printed letter that begins with the word sorry." loading="lazy" decoding="async">
-      <img src="img/p14.webp" width="1050" height="1400" alt="An empty office with the monitors switched off." loading="lazy" decoding="async">
-      <img src="img/p08.webp" width="1050" height="1400" alt="A wrist with a smartwatch, resting on a bench in the sun." loading="lazy" decoding="async">
-      <img src="img/p17.webp" width="1050" height="1400" alt="An office desk with a cake box, a pink sticky note and a mug of coffee." loading="lazy" decoding="async">
+    <div class="strip">
+  <img src="img/p12.webp" width="1050" height="1400" alt="A turquoise river running through a narrow gorge, with a walkway cut into the rock." decoding="async">
+  <img src="img/p02.webp" width="1050" height="1400" alt="A breakfast bowl of fried egg, bread, tomatoes and potatoes on a yellow table." decoding="async">
+  <img src="img/p30.webp" width="1050" height="1400" alt="An empty city street at first light, tram wires overhead." decoding="async">
+  <img src="img/p11.webp" width="1050" height="1400" alt="A bouquet of pink roses and baby's breath resting on a bicycle." decoding="async">
+  <img src="img/p23.webp" width="1121" height="1400" alt="A smartwatch in the dark showing three hours and twenty-eight minutes of sleep." decoding="async">
+  <img src="img/p26.webp" width="1050" height="1400" alt="Sunrise over a misted valley seen through a window, a plate of watermelon on the sill." decoding="async">
+  <img src="img/p03.webp" width="1050" height="1400" alt="A crate of striped decorative gourds outside a supermarket, beside a bucket of flowers." loading="lazy" decoding="async">
+  <img src="img/p15.webp" width="1050" height="1400" alt="Someone in a blue hood standing under trees in bright sun, face turned away." loading="lazy" decoding="async">
+  <img src="img/p13.webp" width="1050" height="1400" alt="A city bus at night with Feierabend on its destination sign." loading="lazy" decoding="async">
+  <img src="img/p24.webp" width="1050" height="1400" alt="Cows grazing in a green pasture below a mountain, seen through a window." loading="lazy" decoding="async">
+  <img src="img/p07.webp" width="1050" height="1400" alt="A bowl of roast pumpkin, chicken and greens on a yellow table." loading="lazy" decoding="async">
+  <img src="img/p21.webp" width="1050" height="1400" alt="A bonfire burning in a metal pit at night, people sitting around it." loading="lazy" decoding="async">
+  <img src="img/p29.webp" width="1050" height="1400" alt="An aeroplane wing above the clouds at sunset, seen from the window seat." loading="lazy" decoding="async">
+  <img src="img/p18.webp" width="1050" height="1400" alt="A supermarket freezer pack of creamed spinach advertising high protein." loading="lazy" decoding="async">
+  <img src="img/p06.webp" width="1050" height="1400" alt="A stone fountain standing in an empty park under old trees." loading="lazy" decoding="async">
+  <img src="img/p09.webp" width="1050" height="1400" alt="Two hands on the handlebars of a pink bicycle." loading="lazy" decoding="async">
+  <img src="img/p25.webp" width="1050" height="1400" alt="A mountain restaurant with snow-covered peaks filling the windows." loading="lazy" decoding="async">
+  <img src="img/p32.webp" width="1050" height="1400" alt="A bottle of gingerbread-flavoured cola on a shop shelf." loading="lazy" decoding="async">
+  <img src="img/p05.webp" width="1050" height="1400" alt="An outdoor bar at night lit in red and pink, empty chairs in the foreground." loading="lazy" decoding="async">
+  <img src="img/p16.webp" width="1050" height="1400" alt="A desk with a laptop, a water bottle and a wrist in frame." loading="lazy" decoding="async">
+  <img src="img/p27.webp" width="1050" height="1400" alt="Rain on a train window, fog sitting over the hills outside." loading="lazy" decoding="async">
+  <img src="img/p04.webp" width="1050" height="1400" alt="A hand holding a film case in front of a crowded bookshelf." loading="lazy" decoding="async">
+  <img src="img/p28.webp" width="1050" height="1400" alt="A cappuccino held above a wooden table, open fields beyond." loading="lazy" decoding="async">
+  <img src="img/p19.webp" width="1050" height="1400" alt="A painted festival tent at night with a crowd outside its doors." loading="lazy" decoding="async">
+  <img src="img/p10.webp" width="1050" height="1400" alt="A workshop poster on a desk, covered in handwriting and sticky notes." loading="lazy" decoding="async">
+  <img src="img/p01.webp" width="1050" height="1400" alt="An empty beer-garden table with a coffee cup and the umbrellas closed." loading="lazy" decoding="async">
+  <img src="img/p22.webp" width="1050" height="1400" alt="A smartwatch showing a photograph, held up in a kitchen." loading="lazy" decoding="async">
+  <img src="img/p31.webp" width="1400" height="1050" alt="Green crates of pumpkins and squash in a supermarket aisle." loading="lazy" decoding="async">
+  <img src="img/p20.webp" width="1050" height="1400" alt="Someone holding a printed letter that begins with the word sorry." loading="lazy" decoding="async">
+  <img src="img/p14.webp" width="1050" height="1400" alt="An empty office with the monitors switched off." loading="lazy" decoding="async">
+  <img src="img/p08.webp" width="1050" height="1400" alt="A wrist with a smartwatch, resting on a bench in the sun." loading="lazy" decoding="async">
+  <img src="img/p17.webp" width="1050" height="1400" alt="An office desk with a cake box, a pink sticky note and a mug of coffee." loading="lazy" decoding="async">
     </div>
 
     <a class="back" href="/">&larr; back</a>
