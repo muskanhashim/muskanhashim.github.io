@@ -22,11 +22,11 @@
       font-family: var(--serif);
       background: var(--bg);
       color: var(--ink);
-      padding: 80px 24px 96px;
+      padding: 56px 32px 96px;
       -webkit-font-smoothing: antialiased;
     }
 
-    .page { max-width: 1140px; margin: 0 auto; }
+    .page { width: 100%; }
 
     h1 {
       font-size: 1.1rem;
@@ -116,7 +116,7 @@
     .back:hover { color: var(--accent); }
 
     @media (max-width: 760px) {
-      body { padding: 48px 18px 72px; }
+      body { padding: 40px 18px 72px; }
       .seam { margin: 56px 0 28px; }
       .row { flex-wrap: wrap; height: auto !important; }
       .row > * { flex: 1 1 46% !important; min-height: 112px; }
@@ -193,7 +193,7 @@
     // a title only gets a size it can carry in the cell it landed in
     function titleSize(title, width, height) {
       var n = title.length;
-      var size = Math.round(Math.min(36, Math.max(15, height * rnd(0.17, 0.26))));
+      var size = Math.round(Math.min(44, Math.max(16, height * rnd(0.26, 0.40))));
       var room = Math.max(1, (width - 34) * (height - 42));
       while (size > 14 && n * size * size * 0.46 > room) size -= 1;
       return size;
@@ -227,8 +227,12 @@
         }
 
         // cells in this row, and how tall the row is: both drawn fresh each time
-        var cells = queue.length <= 2 ? queue.length : Math.min(queue.length, 2 + Math.floor(Math.random() * 3));
-        var height = Math.round(rnd(104, 188));
+        // cells follow the real width, so a wide screen gets more per row
+        // instead of a few very wide tiles with air in them
+        var target = rnd(290, 430);
+        var cells = queue.length <= 2 ? queue.length
+                  : Math.max(2, Math.min(queue.length, 6, Math.round(full / target)));
+        var height = Math.round(rnd(96, 172));
         var row = el("div", "row");
         row.style.height = height + "px";
 
