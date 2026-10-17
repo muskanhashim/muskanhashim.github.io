@@ -12,7 +12,7 @@
       --muted: #999999;
       --rule: #e8e8e8;
       --hover: #fafafa;
-      --accent: #c2527c;
+      --accent: #e0218a;
       --serif: Georgia, "Times New Roman", serif;
     }
 
@@ -39,11 +39,13 @@
       justify-content: space-between;
       align-items: baseline;
       gap: 20px;
-      margin-bottom: 56px;
+      padding-bottom: 12px;
+      margin-bottom: 52px;
+      border-bottom: 1px solid var(--ink);
     }
 
     .elsewhere {
-      font-size: 0.95rem;
+      font-size: 1.1rem;
       color: var(--ink);
       text-decoration: none;
     }
@@ -64,6 +66,11 @@
     }
 
     .wall a:hover { color: var(--accent); }
+
+    /* a piece you have already read stays pink -- :visited is the only part of
+       browser history CSS may style, and only ever as a colour */
+    .wall a:visited,
+    .wall a.read { color: var(--accent); }
 
     .wall .d {
       font-size: 0.7rem;
@@ -100,6 +107,8 @@
 
     .tiles a:hover { background: var(--hover); }
     .tiles a:hover .t { color: var(--accent); }
+    .tiles a:visited,
+    .tiles a.read { color: var(--accent); }
 
     .d { font-size: 0.7rem; color: var(--muted); }
 
@@ -137,7 +146,7 @@
 
     <div class="head">
       <h1>blog</h1>
-      <a class="elsewhere" href="/photos/">photos &rarr;</a>
+      <a class="elsewhere" href="/photos/">photo gallery &rarr;</a>
     </div>
 
     <div class="wall" id="wall"></div>
@@ -171,6 +180,31 @@
       { t: "the most important thing you can learn in life?",    d: "",         u: "most-imp.html" }
     ];
 
+    // :visited handles this natively, but browsers now partition it and clear it
+    // with history, so keep our own note of what has been opened from here
+    var READ_KEY = "read-posts";
+
+    function readSet() {
+      try { return JSON.parse(localStorage.getItem(READ_KEY)) || []; }
+      catch (e) { return []; }
+    }
+
+    var READ = readSet();
+
+    function markRead(u) {
+      if (READ.indexOf(u) !== -1) return;
+      READ.push(u);
+      try { localStorage.setItem(READ_KEY, JSON.stringify(READ)); } catch (e) {}
+    }
+
+    function postLink(p) {
+      var a = document.createElement("a");
+      a.href = p.u;
+      if (READ.indexOf(p.u) !== -1) a.className = "read";
+      a.addEventListener("click", function () { markRead(p.u); });
+      return a;
+    }
+
     function rnd(a, b) { return a + Math.random() * (b - a); }
     function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
 
@@ -200,8 +234,7 @@
     }
 
     function tile(p, width, height) {
-      var a = document.createElement("a");
-      a.href = p.u;
+      var a = postLink(p);
       if (p.d) a.appendChild(el("span", "d", p.d));
       var t = el("span", "t", p.t);
       t.style.fontSize = titleSize(p.t, width, height) + "px";
@@ -282,8 +315,7 @@
       var host = document.getElementById("wall");
       host.textContent = "";
       shuffled(POSTS).forEach(function (p) {
-        var a = document.createElement("a");
-        a.href = p.u;
+        var a = postLink(p);
         a.appendChild(document.createTextNode(p.t));
         if (p.d) a.appendChild(el("span", "d", p.d));
         var n = p.t.length;
