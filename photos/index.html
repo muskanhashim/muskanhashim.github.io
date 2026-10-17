@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muskan Hashim — Photos</title>
+  <meta name="author" content="Muskan Hashim" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <meta name="description" content="Photographs by Muskan Hashim." />
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --ink: #111111;
+      --muted: #9A9A96;
+      --rule: #E6E4DF;
+      --accent: #B4552A;
+      --serif: Georgia, "Times New Roman", serif;
+      --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+  
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0E0F11;
+        --ink: #ECEDEF;
+        --muted: #7D8188;
+        --rule: #23262A;
+        --accent: #E08A54;
+      }
+    }
+  
+    :root[data-theme="dark"] {
+      --bg: #0E0F11;
+      --ink: #ECEDEF;
+      --muted: #7D8188;
+      --rule: #23262A;
+      --accent: #E08A54;
+    }
+  
+    * { box-sizing: border-box; }
+  
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      -webkit-font-smoothing: antialiased;
+    }
+  
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(24px, 4vw, 44px) clamp(16px, 4vw, 48px) clamp(60px, 9vw, 120px);
+    }
+  
+    /* ---------- furniture ---------- */
+  
+    .masthead {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: baseline;
+      gap: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+    }
+  
+    h1 { font-size: 17.6px; font-weight: 700; margin: 0; }
+  
+    .count {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+  
+    nav {
+      display: flex;
+      gap: 20px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin: 14px 0 clamp(44px, 8vw, 96px);
+    }
+  
+    nav a { color: var(--muted); text-decoration: none; }
+    nav a:hover { color: var(--ink); }
+    nav a[aria-current="page"] { color: var(--ink); }
+    nav a[aria-current="page"]::before { content: "\2022  "; color: var(--accent); }
+    nav a:focus-visible, .back:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  
+    /* ---------- the sequence ---------- */
+  
+    .gallery { display: flex; flex-direction: column; gap: clamp(44px, 7.5vw, 104px); }
+  
+    .movement {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: clamp(12px, 2.2vw, 30px);
+      align-items: start;
+    }
+  
+    figure { margin: 0; transition: opacity 260ms ease; }
+  
+    .num {
+      display: block;
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 7px;
+      transition: color 200ms ease;
+    }
+  
+    figure img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      background: var(--rule);
+    }
+  
+    @media (hover: hover) and (min-width: 721px) {
+      .gallery:hover figure { opacity: 0.32; }
+      .gallery figure:hover { opacity: 1; }
+      .gallery figure:hover .num { color: var(--accent); }
+    }
+  
+    /* placements: every movement is its own composition */
+  
+    .m-split .lead { grid-column: 1 / 8; }
+    .m-split .lead img { aspect-ratio: 3 / 4; }
+    .m-split .up { grid-column: 9 / 13; margin-top: clamp(20px, 5vw, 64px); }
+    .m-split .up img { aspect-ratio: 4 / 5; }
+    .m-split .down { grid-column: 9 / 13; margin-top: clamp(14px, 2.4vw, 30px); }
+    .m-split .down img { aspect-ratio: 1 / 1; }
+  
+    .m-stagger .a { grid-column: 1 / 4; }
+    .m-stagger .a img { aspect-ratio: 3 / 4; }
+    .m-stagger .b { grid-column: 4 / 7; margin-top: clamp(26px, 6vw, 82px); }
+    .m-stagger .b img { aspect-ratio: 1 / 1; }
+    .m-stagger .c { grid-column: 8 / 11; margin-top: clamp(8px, 1.6vw, 22px); }
+    .m-stagger .c img { aspect-ratio: 4 / 5; }
+    .m-stagger .d { grid-column: 11 / 13; margin-top: clamp(40px, 9vw, 124px); }
+    .m-stagger .d img { aspect-ratio: 2 / 3; }
+  
+    .m-breath .full { grid-column: 1 / 13; }
+    .m-breath .full img { aspect-ratio: 16 / 7; }
+  
+    .m-pair .left { grid-column: 1 / 6; }
+    .m-pair .left img { aspect-ratio: 4 / 5; }
+    .m-pair .right { grid-column: 7 / 13; margin-top: clamp(32px, 7vw, 96px); }
+    .m-pair .right img { aspect-ratio: 3 / 4; }
+  
+    .m-quad .a { grid-column: 1 / 4; }
+    .m-quad .a img { aspect-ratio: 4 / 5; }
+    .m-quad .b { grid-column: 4 / 7; margin-top: clamp(16px, 3.4vw, 46px); }
+    .m-quad .b img { aspect-ratio: 1 / 1; }
+    .m-quad .c { grid-column: 7 / 10; margin-top: clamp(6px, 1.2vw, 16px); }
+    .m-quad .c img { aspect-ratio: 3 / 4; }
+    .m-quad .d { grid-column: 10 / 13; margin-top: clamp(30px, 6.5vw, 88px); }
+    .m-quad .d img { aspect-ratio: 1 / 1; }
+  
+    .m-coda .only { grid-column: 4 / 10; }
+    .m-coda .only img { aspect-ratio: 3 / 4; }
+  
+    @media (max-width: 720px) {
+      .movement { grid-template-columns: 1fr; gap: 26px; }
+      .movement figure { grid-column: 1 / -1 !important; margin-top: 0 !important; }
+      .m-breath .full img { aspect-ratio: 4 / 3; }
+      .gallery { gap: 38px; }
+    }
+  
+    /* ---------- end ---------- */
+  
+    .back {
+      display: inline-block;
+      margin-top: clamp(48px, 9vw, 110px);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+    }
+  
+    .back:hover { color: var(--ink); }
+  
+    @media (prefers-reduced-motion: reduce) {
+      figure, .num { transition: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <h1>photos</h1>
+    <span class="count">32 frames &middot; no captions</span>
+  </header>
+
+  <nav>
+    <a href="/blog/">blog</a>
+    <a href="/photos/" aria-current="page">photos</a>
+  </nav>
+
+  <div class="gallery">
+      <div class="movement m-split">
+        <figure class="lead">
+          <span class="num">01</span>
+          <img src="img/p12.webp" alt="A turquoise river running through a narrow gorge, with a walkway cut into the rock." decoding="async">
+        </figure>
+        <figure class="up">
+          <span class="num">02</span>
+          <img src="img/p02.webp" alt="A breakfast bowl of fried egg, bread, tomatoes and potatoes on a yellow table." decoding="async">
+        </figure>
+        <figure class="down">
+          <span class="num">03</span>
+          <img src="img/p30.webp" alt="An empty city street at first light, tram wires overhead." decoding="async">
+        </figure>
+      </div>
+      <div class="movement m-stagger">
+        <figure class="a">
+          <span class="num">04</span>
+          <img src="img/p11.webp" alt="A bouquet of pink roses and baby's breath resting on a bicycle." loading="lazy" decoding="async">
+        </figure>
+        <figure class="b">
+          <span class="num">05</span>
+          <img src="img/p23.webp" alt="A smartwatch in the dark showing three hours and twenty-eight minutes of sleep." loading="lazy" decoding="async">
+        </figure>
+        <figure class="c">
+          <span class="num">06</span>
+          <img src="img/p26.webp" alt="Sunrise over a misted valley seen through a window, a plate of watermelon on the sill." loading="lazy" decoding="async">
+        </figure>
+        <figure class="d">
+          <span class="num">07</span>
+          <img src="img/p03.webp" alt="A crate of striped decorative gourds outside a supermarket, beside a bucket of flowers." loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <div class="movement m-breath">
+        <figure class="full">
+          <span class="num">08</span>
+          <img src="img/p24.webp" alt="Cows grazing in a green pasture below a mountain, seen through a window." loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <div class="movement m-pair">
+        <figure class="left">
+          <span class="num">09</span>
+          <img src="img/p15.webp" alt="Someone in a blue hood standing under trees in bright sun, face turned away." loading="lazy" decoding="async">
+        </figure>
+        <figure class="right">
+          <span class="num">10</span>
+          <img src="img/p13.webp" alt="A city bus at night with Feierabend on its destination sign." loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <div class="movement m-quad">
+        <figure class="a">
+          <span class="num">11</span>
+          <img src="img/p07.webp" alt="A bowl of roast pumpkin, chicken and greens on a yellow table." loading="lazy" decoding="async">
+        </figure>
+        <figure class="b">
+          <span class="num">12</span>
+          <img src="img/p20.webp" alt="Someone holding a printed letter that begins with the word sorry." loading="lazy" decoding="async">
+        </figure>
+        <figure class="c">
+          <span class="num">13</span>
+          <img src="img/p29.webp" alt="An aeroplane wing above the clouds at sunset, seen from the window seat." loading="lazy" decoding="async">
+        </figure>
+        <figure class="d">
+          <span class="num">14</span>
+          <img src="img/p18.webp" alt="A supermarket freezer pack of creamed spinach advertising high protein." loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <div class="movement m-split">
+        <figure class="lead">
+          <span class="num">15</span>
+          <img src="img/p06.webp" alt="A stone fountain standing in an empty park under old trees." loading="lazy" decoding="async">
+        </figure>
+        <figure class="up">
+          <span class="num">16</span>
+          <img src="img/p09.webp" alt="Two hands on the handlebars of a pink bicycle." loading="lazy" decoding="async">
+        </figure>
+        <figure class="down">
+          <span class="num">17</span>
+          <img src="img/p25.webp" alt="A mountain restaurant with snow-covered peaks filling the windows." loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <div class="movement m-stagger">
+        <figure class="a">
+          <span class="num">18</span>
+          <img src="img/p32.webp" alt="A bottle of gingerbread-flavoured cola on a shop shelf." loading="lazy" decoding="async">
+        </figure>
+        <figure class="b">
+          <span class="num">19</span>
+          <img src="img/p05.webp" alt="An outdoor bar at night lit in red and pink, empty chairs in the foreground." loading="lazy" decoding="async">
+        </figure>
+        <figure class="c">
+          <span class="num">20</span>
+          <img src="img/p16.webp" alt="A desk with a laptop, a water bottle and a wrist in frame." loading="lazy" decoding="async">
+        </figure>
+        <figure class="d">
+          <span class="num">21</span>
+          <img src="img/p04.webp" alt="A hand holding a film case in front of a crowded bookshelf." loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <div class="movement m-breath">
+        <figure class="full">
+          <span class="num">22</span>
+          <img src="img/p27.webp" alt="Rain on a train window, fog sitting over the hills outside." loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <div class="movement m-pair">
+        <figure class="left">
+          <span class="num">23</span>
+          <img src="img/p28.webp" alt="A cappuccino held above a wooden table, open fields beyond." loading="lazy" decoding="async">
+        </figure>
+        <figure class="right">
+          <span class="num">24</span>
+          <img src="img/p19.webp" alt="A painted festival tent at night with a crowd outside its doors." loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <div class="movement m-quad">
+        <figure class="a">
+          <span class="num">25</span>
+          <img src="img/p10.webp" alt="A workshop poster on a desk, covered in handwriting and sticky notes." loading="lazy" decoding="async">
+        </figure>
+        <figure class="b">
+          <span class="num">26</span>
+          <img src="img/p01.webp" alt="An empty beer-garden table with a coffee cup and the umbrellas closed." loading="lazy" decoding="async">
+        </figure>
+        <figure class="c">
+          <span class="num">27</span>
+          <img src="img/p22.webp" alt="A smartwatch showing a photograph, held up in a kitchen." loading="lazy" decoding="async">
+        </figure>
+        <figure class="d">
+          <span class="num">28</span>
+          <img src="img/p31.webp" alt="Green crates of pumpkins and squash in a supermarket aisle." loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <div class="movement m-split">
+        <figure class="lead">
+          <span class="num">29</span>
+          <img src="img/p21.webp" alt="A bonfire burning in a metal pit at night, people sitting around it." loading="lazy" decoding="async">
+        </figure>
+        <figure class="up">
+          <span class="num">30</span>
+          <img src="img/p14.webp" alt="An empty office with the monitors switched off." loading="lazy" decoding="async">
+        </figure>
+        <figure class="down">
+          <span class="num">31</span>
+          <img src="img/p08.webp" alt="A wrist with a smartwatch, resting on a bench in the sun." loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <div class="movement m-coda">
+        <figure class="only">
+          <span class="num">32</span>
+          <img src="img/p17.webp" alt="An office desk with a cake box, a pink sticky note and a mug of coffee." loading="lazy" decoding="async">
+        </figure>
+      </div>
+
+  </div>
+
+  <a class="back" href="/">&larr; back</a>
+</div>
+</body>
+</html>

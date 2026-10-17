@@ -5,138 +5,359 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Muskan Hashim — Blog</title>
   <meta name="author" content="Muskan Hashim" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
   <style>
+    :root {
+      --bg: #FFFFFF;
+      --ink: #111111;
+      --muted: #9A9A96;
+      --rule: #E6E4DF;
+      --hover: #F6F5F2;
+      --accent: #B4552A;
+      --serif: Georgia, "Times New Roman", serif;
+      --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+  
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0E0F11;
+        --ink: #ECEDEF;
+        --muted: #7D8188;
+        --rule: #23262A;
+        --hover: #16181C;
+        --accent: #E08A54;
+      }
+    }
+  
+    :root[data-theme="dark"] {
+      --bg: #0E0F11;
+      --ink: #ECEDEF;
+      --muted: #7D8188;
+      --rule: #23262A;
+      --hover: #16181C;
+      --accent: #E08A54;
+    }
+  
+    * { box-sizing: border-box; }
+  
     body {
-      font-family: Georgia, serif;
-      background: #fff;
-      color: #111;
-      max-width: 640px;
-      margin: 80px auto;
-      padding: 0 24px;
-    }
-    h1 {
-      font-size: 1.1rem;
-      font-weight: normal;
-      margin-bottom: 48px;
-      letter-spacing: 0.02em;
-    }
-    a {
-      color: #111;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .post-list {
-      list-style: none;
-      padding: 0;
       margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      -webkit-font-smoothing: antialiased;
     }
-    .post-list li {
+  
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(24px, 4vw, 44px) clamp(16px, 4vw, 48px) clamp(60px, 9vw, 120px);
+    }
+  
+    /* ---------- furniture ---------- */
+  
+    .masthead {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: baseline;
+      gap: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+    }
+  
+    h1 { font-size: 17.6px; font-weight: 700; margin: 0; }
+  
+    .count, nav, .back {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+  
+    .count { font-size: 10px; color: var(--muted); }
+  
+    nav { display: flex; gap: 20px; margin: 14px 0 clamp(40px, 7vw, 86px); }
+    nav a { color: var(--muted); text-decoration: none; }
+    nav a:hover { color: var(--ink); }
+    nav a[aria-current="page"] { color: var(--ink); }
+    nav a[aria-current="page"]::before { content: "\2022  "; color: var(--accent); }
+  
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  
+    /* ---------- the wall ---------- */
+  
+    .wall {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 10px 26px;
+    }
+  
+    .wall a {
+      color: var(--ink);
+      text-decoration: none;
+      line-height: 1.2;
+      padding-bottom: 3px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 140ms ease, color 140ms ease;
+    }
+  
+    .wall a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+  
+    .wall .d {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-left: 8px;
+      opacity: 0;
+      transition: opacity 140ms ease;
+    }
+  
+    .wall a:hover .d { opacity: 1; }
+  
+    .seam {
+      height: 1px;
+      background: var(--rule);
+      margin: clamp(54px, 9vw, 112px) 0 clamp(26px, 4vw, 44px);
+    }
+  
+    /* ---------- the tiles: rows that pack ---------- */
+  
+    .tiles {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+  
+    .row { display: flex; gap: 1px; }
+    .stack { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+    .stack > a { flex: 1; }
+  
+    .tiles a {
+      background: var(--bg);
+      color: var(--ink);
+      text-decoration: none;
+      padding: 13px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 0;
+      overflow: hidden;
+      transition: background 140ms ease;
+    }
+  
+    .tiles a:hover { background: var(--hover); }
+  
+    .meta {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      gap: 24px;
-      padding: 12px 0;
-      border-bottom: 1px solid #e8e8e8;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
-    .post-list li:first-child {
-      border-top: 1px solid #e8e8e8;
+  
+    .n { transition: color 140ms ease; }
+    .tiles a:hover .n { color: var(--accent); }
+  
+    /* the meta line pins to the top, the title sits on the cell's floor */
+    .t { margin-top: auto; line-height: 1.14; overflow-wrap: break-word; }
+  
+    @media (max-width: 760px) {
+      .row { flex-wrap: wrap; height: auto !important; }
+      .row > * { flex: 1 1 46% !important; min-height: 136px; }
     }
-    .post-title {
-      font-size: 1rem;
+  
+    @media (max-width: 440px) {
+      .row > * { flex: 1 1 100% !important; }
     }
-    .post-date {
-      font-size: 0.85rem;
-      color: #999;
-      white-space: nowrap;
-    }
+  
+    /* ---------- end ---------- */
+  
     .back {
-      display: block;
-      margin-top: 64px;
-      font-size: 0.85rem;
-      color: #999;
+      display: inline-block;
+      margin-top: clamp(44px, 8vw, 96px);
+      color: var(--muted);
+      text-decoration: none;
+    }
+  
+    .back:hover { color: var(--ink); }
+  
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
     }
   </style>
 </head>
 <body>
+<div class="page">
+  <header class="masthead">
+    <h1>blog</h1>
+    <span class="count">16 pieces</span>
+  </header>
 
-  <h1>blog</h1>
+  <nav>
+    <a href="/blog/" aria-current="page">blog</a>
+    <a href="/photos/">photos</a>
+  </nav>
 
-  <ul class="post-list">
-    <li>
-      <a class="post-title" href="is-it-a-privilege-to-be-principled.html">is it a privilege to be principled</a>
-      <span class="post-date">june 28 2026</span>
-    </li>
-    <li>
-      <a class="post-title" href="on-why-we-deserve-privacy-and-personal-freedoms.html">on why we deserve privacy and personal freedoms</a>
-      <span class="post-date">june 2026</span>
-    </li>
-    <li>
-  <a class="post-title" href="to-a-dead-version-of-myself.html">to a dead version of myself</a>
-  <span class="post-date">feb 7 2026</span>
-</li>
-    <li>
-  <a class="post-title" href="nobodys-daughter.html">nobody's daughter</a>
-  <span class="post-date">september 2020</span>
-</li>
-     <li>
-  <a class="post-title" href="dear-german-dad.html">dear german dad,</a>
-  <span class="post-date">may 31 2026</span>
-</li>
-    <li>
-  <a class="post-title" href="thoughts-from-the-er.html">thoughts from the er</a>
-  <span class="post-date">september 19 2025</span>
-</li>
-    <li>
-  <a class="post-title" href="train-station-human.html">train station human</a>
-  <span class="post-date">august 2025</span>
-</li>
-    <li>
-  <a class="post-title" href="most-imp.html">the most important thing you can learn in life?</a>
-  <span class="post-date">always a little late, but can never be too early (to learn)</span>
-</li>
-     <li>
-  <a class="post-title" href="live-with-yourself.html">learning to live with your (sins) self</a>
-  <span class="post-date">july 2022</span>
-</li>
-     <li>
-  <a class="post-title" href="moving-with-intention.html">On "moving" through life, intentionally.</a>
-  <span class="post-date">July 2026</span>
-</li>
-    <li>
-  <a class="post-title" href="free-will.html">on ai-free will.</a>
-  <span class="post-date">July 2026</span>
-</li>
-    <li>
-  <a class="post-title" href="the-night-we-met.html">the night we met</a>
-  <span class="post-date">August 2026</span>
-</li>
-</li>
-    <li>
-  <a class="post-title" href="nice-to-have.html">nice to haves.</a>
-  <span class="post-date">August 2026</span>
-</li>
-        <li>
-  <a class="post-title" href="beautiful-things.html">beautiful things</a>
-  <span class="post-date">August 2026</span>
-</li>
-<li>
-  <a class="post-title" href="random-stuff.html">random stuff</a>
-  <span class="post-date">Oct 2026</span>
-</li>
+  <div class="wall" id="wall"></div>
 
-   <li>
-  <a class="post-title" href="the-only-thing.html">the only thing i have is myself</a>
-  <span class="post-date">Oct 2026</span>
-</li>
-     <li>
-  <a class="post-title" href="fight-me.html">fight me.</a>
-  <span class="post-date">Oct 2026</span>
-</li>
-  </ul>
+  <div class="seam"></div>
 
-  <a class="back" href="/">← back</a>
+  <div class="tiles" id="tiles"></div>
 
+  <a class="back" href="/">&larr; back</a>
+</div>
+
+<script>
+  (function () {
+    // numbers are permanent: 01 is the oldest piece, new posts take the next number
+    var POSTS = [
+      { n:  1, t: "nobody\u2019s daughter",                            d: "sep 2020", u: "nobodys-daughter.html" },
+      { n:  2, t: "learning to live with your (sins) self",           d: "jul 2022", u: "live-with-yourself.html" },
+      { n:  3, t: "train station human",                              d: "aug 2025", u: "train-station-human.html" },
+      { n:  4, t: "thoughts from the er",                             d: "sep 2025", u: "thoughts-from-the-er.html" },
+      { n:  5, t: "to a dead version of myself",                      d: "feb 2026", u: "to-a-dead-version-of-myself.html" },
+      { n:  6, t: "dear german dad,",                                 d: "may 2026", u: "dear-german-dad.html" },
+      { n:  7, t: "is it a privilege to be principled",               d: "jun 2026", u: "is-it-a-privilege-to-be-principled.html" },
+      { n:  8, t: "on why we deserve privacy and personal freedoms",  d: "jun 2026", u: "on-why-we-deserve-privacy-and-personal-freedoms.html" },
+      { n:  9, t: "On \u201Cmoving\u201D through life, intentionally.", d: "jul 2026", u: "moving-with-intention.html" },
+      { n: 10, t: "on ai-free will.",                                 d: "jul 2026", u: "free-will.html" },
+      { n: 11, t: "the night we met",                                 d: "aug 2026", u: "the-night-we-met.html" },
+      { n: 12, t: "beautiful things",                                 d: "aug 2026", u: "beautiful-things.html" },
+      { n: 13, t: "random stuff",                                     d: "oct 2026", u: "random-stuff.html" },
+      { n: 14, t: "the only thing i have is myself",                  d: "oct 2026", u: "the-only-thing.html" },
+      { n: 15, t: "fight me.",                                        d: "oct 2026", u: "fight-me.html" },
+      { n: 16, t: "the most important thing you can learn in life?",  d: "undated",  u: "most-imp.html" }
+    ];
+
+    function rnd(a, b) { return a + Math.random() * (b - a); }
+    function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
+
+    function shuffled(list) {
+      var a = list.slice();
+      for (var i = a.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+      }
+      return a;
+    }
+
+    function el(tag, cls, text) {
+      var e = document.createElement(tag);
+      if (cls) e.className = cls;
+      if (text) e.textContent = text;
+      return e;
+    }
+
+    // a title only gets a size it can carry in the cell it landed in
+    function titleSize(title, width, height) {
+      var n = title.length;
+      var sizes = n <= 14 ? [20, 25, 31] : n <= 24 ? [17, 21, 26] : n <= 34 ? [16, 19, 23] : [15, 17, 20];
+      var size = pick(sizes);
+      var room = Math.max(1, (width - 34) * (height - 60));
+      while (size > 14 && n * size * size * 0.46 > room) size -= 1;
+      return size;
+    }
+
+    function tile(p, width, height) {
+      var a = document.createElement("a");
+      a.href = p.u;
+      var meta = el("span", "meta");
+      meta.appendChild(el("span", "n", ("0" + p.n).slice(-2)));
+      meta.appendChild(el("span", "dd", p.d));
+      a.appendChild(meta);
+      var t = el("span", "t", p.t);
+      t.style.fontSize = titleSize(p.t, width, height) + "px";
+      a.appendChild(t);
+      return a;
+    }
+
+    function renderTiles() {
+      var host = document.getElementById("tiles");
+      host.textContent = "";
+      var full = host.clientWidth || 1084;
+      var queue = shuffled(POSTS);
+
+      while (queue.length) {
+        // a single leftover joins the row above rather than starting a bare one
+        if (queue.length === 1 && host.lastChild) {
+          var prev = host.lastChild;
+          var tall = parseInt(prev.style.height, 10) || 170;
+          var solo = tile(queue.shift(), Math.round(full * 0.3), tall);
+          solo.style.flex = rnd(1, 2.3) + " 1 0";
+          prev.appendChild(solo);
+          break;
+        }
+
+        // cells in this row, and how tall the row is: both drawn fresh each time
+        var cells = queue.length <= 2 ? queue.length : Math.min(queue.length, 2 + Math.floor(Math.random() * 3));
+        var height = Math.round(rnd(140, 236));
+        var row = el("div", "row");
+        row.style.height = height + "px";
+
+        var weights = [], i;
+        for (i = 0; i < cells; i++) weights.push(rnd(1, 2.3));
+        var sum = weights.reduce(function (x, y) { return x + y; }, 0);
+
+        for (i = 0; i < cells && queue.length; i++) {
+          var w = Math.round(full * weights[i] / sum);
+          // now and then a cell holds two short tiles stacked, so the rows interlock
+          // stacking eats two posts, so only do it while every later cell still has one
+          var stack = cells <= 3 && height > 176 && queue.length >= cells - i + 1 && Math.random() < 0.38;
+
+          if (stack) {
+            var box = el("div", "stack");
+            box.style.flex = weights[i] + " 1 0";
+            box.appendChild(tile(queue.shift(), w, height / 2));
+            box.appendChild(tile(queue.shift(), w, height / 2));
+            row.appendChild(box);
+          } else {
+            var a = tile(queue.shift(), w, height);
+            a.style.flex = weights[i] + " 1 0";
+            row.appendChild(a);
+          }
+        }
+
+        // never leave a lone tile stranded on a row of its own
+        if (queue.length === 1) {
+          var w8 = rnd(1, 2.3);
+          var last = tile(queue.shift(), Math.round(full * 0.3), height);
+          last.style.flex = w8 + " 1 0";
+          row.appendChild(last);
+        }
+
+        host.appendChild(row);
+      }
+    }
+
+    function renderWall() {
+      var host = document.getElementById("wall");
+      host.textContent = "";
+      shuffled(POSTS).forEach(function (p) {
+        var a = document.createElement("a");
+        a.href = p.u;
+        a.appendChild(document.createTextNode(p.t));
+        a.appendChild(el("span", "d", p.d));
+        var n = p.t.length;
+        var sizes = n <= 14 ? [24, 30, 37] : n <= 24 ? [21, 25, 31] : n <= 34 ? [18, 22, 26] : [17, 20, 23];
+        a.style.fontSize = pick(sizes) + "px";
+        host.appendChild(a);
+      });
+    }
+
+    renderWall();
+    renderTiles();
+  })();
+</script>
 </body>
 </html>
