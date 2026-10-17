@@ -8,6 +8,11 @@
   --serif: Georgia, "Times New Roman", serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
   --measure: 62ch;
+  /* each piece may set its own colour: it lands on the title, the dedication
+     and any break marks. default is simply the ink. */
+  --piece: #111111;
+  /* the easter-egg pink: faint on purpose, legible up close */
+  --whisper: #e98cb8;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -47,6 +52,7 @@ a:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
 article { max-width: var(--measure); margin: 0 auto; }
 
 h1 {
+  color: var(--piece);
   font-size: clamp(1.7rem, 3.6vw, 2.4rem);
   font-weight: normal;
   line-height: 1.16;
@@ -157,12 +163,22 @@ s { text-decoration-thickness: 1px; color: var(--soft); }
 /* a dedication is not the first paragraph of the essay, it is a threshold */
 .dedication p:first-of-type {
   font-style: italic;
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: var(--soft);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--piece);
   padding-bottom: 1.8em;
   margin-bottom: 2.2em;
   border-bottom: 1px solid var(--rule);
+}
+
+/* a few words lit so that, read on their own, they say something else */
+.egg { color: var(--whisper); }
+
+/* a break the author asked for, shown rather than hidden */
+.dash {
+  color: var(--piece);
+  letter-spacing: 0.35em;
+  margin-bottom: 1.35em;
 }
 
 /* this one argues with a machine, so it is set like one */
