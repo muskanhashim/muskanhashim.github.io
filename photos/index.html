@@ -32,15 +32,20 @@
       font-size: 1.1rem;
       font-weight: normal;
       letter-spacing: 0.02em;
-      margin-bottom: 10px;
+    }
+
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 56px;
     }
 
     .elsewhere {
-      display: block;
-      font-size: 0.85rem;
-      color: var(--muted);
+      font-size: 0.95rem;
+      color: var(--ink);
       text-decoration: none;
-      margin-bottom: 64px;
     }
 
     .elsewhere:hover { color: var(--accent); }
@@ -50,7 +55,7 @@
     .row {
       display: flex;
       gap: 14px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       align-items: flex-start;
     }
 
@@ -60,8 +65,6 @@
       display: block;
       background: var(--rule);
     }
-
-    .gap { margin-bottom: 58px; }
 
     .back {
       display: block;
@@ -78,10 +81,9 @@
 
     @media (max-width: 620px) {
       body { padding: 48px 18px 72px; }
-      .elsewhere { margin-bottom: 40px; }
+      .head { margin-bottom: 36px; }
       .row { flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
       .row img { height: auto; width: calc(50% - 5px); }
-      .gap { margin-bottom: 32px; }
     }
   </style>
 </head>
@@ -89,9 +91,10 @@
 
   <div class="page">
 
-    <h1>photos</h1>
-
-    <a class="elsewhere" href="/blog/">blog &rarr;</a>
+    <div class="head">
+      <h1>photos</h1>
+      <a class="elsewhere" href="/blog/">blog &rarr;</a>
+    </div>
 
     <div class="row" style="--h: 270">
       <img src="img/p12.webp" width="1050" height="1400" alt="A turquoise river running through a narrow gorge, with a walkway cut into the rock." decoding="async">
@@ -99,7 +102,7 @@
       <img src="img/p30.webp" width="1050" height="1400" alt="An empty city street at first light, tram wires overhead." decoding="async">
       <img src="img/p11.webp" width="1050" height="1400" alt="A bouquet of pink roses and baby's breath resting on a bicycle." decoding="async">
     </div>
-    <div class="row gap" style="--h: 225">
+    <div class="row" style="--h: 225">
       <img src="img/p23.webp" width="1121" height="1400" alt="A smartwatch in the dark showing three hours and twenty-eight minutes of sleep." decoding="async">
       <img src="img/p26.webp" width="1050" height="1400" alt="Sunrise over a misted valley seen through a window, a plate of watermelon on the sill." decoding="async">
       <img src="img/p03.webp" width="1050" height="1400" alt="A crate of striped decorative gourds outside a supermarket, beside a bucket of flowers." loading="lazy" decoding="async">
@@ -112,7 +115,7 @@
       <img src="img/p21.webp" width="1050" height="1400" alt="A bonfire burning in a metal pit at night, people sitting around it." loading="lazy" decoding="async">
       <img src="img/p29.webp" width="1050" height="1400" alt="An aeroplane wing above the clouds at sunset, seen from the window seat." loading="lazy" decoding="async">
     </div>
-    <div class="row gap" style="--h: 240">
+    <div class="row" style="--h: 240">
       <img src="img/p18.webp" width="1050" height="1400" alt="A supermarket freezer pack of creamed spinach advertising high protein." loading="lazy" decoding="async">
       <img src="img/p06.webp" width="1050" height="1400" alt="A stone fountain standing in an empty park under old trees." loading="lazy" decoding="async">
       <img src="img/p09.webp" width="1050" height="1400" alt="Two hands on the handlebars of a pink bicycle." loading="lazy" decoding="async">
@@ -127,7 +130,7 @@
       <img src="img/p28.webp" width="1050" height="1400" alt="A cappuccino held above a wooden table, open fields beyond." loading="lazy" decoding="async">
       <img src="img/p19.webp" width="1050" height="1400" alt="A painted festival tent at night with a crowd outside its doors." loading="lazy" decoding="async">
     </div>
-    <div class="row gap" style="--h: 285">
+    <div class="row" style="--h: 285">
       <img src="img/p10.webp" width="1050" height="1400" alt="A workshop poster on a desk, covered in handwriting and sticky notes." loading="lazy" decoding="async">
       <img src="img/p01.webp" width="1050" height="1400" alt="An empty beer-garden table with a coffee cup and the umbrellas closed." loading="lazy" decoding="async">
       <img src="img/p22.webp" width="1050" height="1400" alt="A smartwatch showing a photograph, held up in a kitchen." loading="lazy" decoding="async">
