@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>the only thing i have is myself</title>
+  <meta name="author" content="Muskan Hashim" />
+  <style>
+    body {
+      font-family: monospace;
+      background: #fff;
+      color: #111;
+      max-width: 640px;
+      margin: 80px auto;
+      padding: 0 24px;
+    }
+    h1 {
+      font-size: 1.4rem;
+      font-weight: normal;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .date {
+      font-size: 0.85rem;
+      color: #999;
+      margin-bottom: 48px;
+      display: block;
+    }
+    p {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1.4em;
+    }
+    .back {
+      display: block;
+      margin-top: 64px;
+      font-size: 0.85rem;
+      color: #999;
+      text-decoration: none;
+    }
+    .back:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>the only thing i have is myself</h1>
+
+  <p>
+    I was in grade 10 when one of the guys who liked me punched a glass window at school because someone else asked me out.
+  </p>
+
+  <p>
+    Then there were the love letters etched out in blood in grade 12.
+  </p>
+
+  <p>
+    At 19, the 38 year old man who liked me wrote a book about me, and then left me in the country he flew me out to (because I asked).
+  </p>
+
+  <p>
+    Love is ugly, and it doesn’t exist.
+  </p>
+
+  <p>
+    My father keeps apologizing for abandoning me, thinking any amount of money would bring me my childhood back, or make me somehow act my age now.
+  </p>
+
+  <p>
+    Unfortunately, I’m wiser than that. It must be nice to lose yourself in love but I don’t have the heart to lose anymore than I have. The only thing I have is myself.
+  </p>
+
+  <a class="back" href="index.html">← all posts</a>
+
+</body>
+</html>
