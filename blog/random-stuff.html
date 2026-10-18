@@ -1,62 +1,42 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>random stuff</title>
-<meta content="Muskan Hashim" name="author"/>
-<link href="post.css?v=2" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>random stuff</title>
+  <meta name="author" content="Muskan Hashim">
+  <link rel="stylesheet" href="post.css?v=2">
 </head>
-<body class="scatter"><div class="thread"></div>
-<div class="head">
-<a href="/blog/">blog</a>
-<a href="/photos/">photo gallery →</a>
-</div>
-<article>
-<span aria-hidden="true" class="folio">12</span><h1>random stuff</h1>
-<p class="note" data-n="0">Growing up is finding out you have outgrown your childhood home but are too small to fit in a new one yet.</p>
-<p class="note" data-n="1">Not having to work for minimum wage is a privilege.</p>
-<p class="note" data-n="2" data-pair="choice">Being happy is a choice.</p>
-<p class="note" data-n="3" data-pair="choice">Being worried is a choice - that is never based on external circumstances.</p>
-<p class="note" data-n="4">I wouldn’t worry too much if you think someone is perfect. Idealization is fleeting infatuation. You’re fucked when you start loving someone for their imperfections.</p>
-<p class="note keeper" data-n="5"><span class="ln">and this man, who wouldn’t know romance if it kissed him on the mouth; who didn't have an ounce of poetry in his bones, said in the most casual of ways: my most favorite thing about you are the fading pimples on your forehead,</span> <span class="ln last">because <span class="egg">they assure me that you are real</span></span></p>
-</article>
-<a class="back" href="/blog/">← all posts</a>
-<script>(function(){var t=document.querySelector(".thread");if(!t||matchMedia("(prefers-reduced-motion: reduce)").matches)return;function f(){var h=document.body.scrollHeight-innerHeight;t.style.height=(h>0?Math.min(1,scrollY/h):0)*innerHeight+"px";}addEventListener("scroll",f,{passive:true});addEventListener("resize",f);f();})();</script> <span class="mark"><a aria-label="nobody’s daughter" href="/blog/nobodys-daughter.html"><i>1</i></a><a aria-label="to a dead version of myself" href="/blog/to-a-dead-version-of-myself.html"><i>1</i></a><a aria-label="the only thing i have is myself" href="/blog/the-only-thing.html"><i>7</i></a></span>
-<script>
-(function () {
-  var art = document.querySelector("article");
-  var notes = Array.prototype.slice.call(art.querySelectorAll("p.note"));
-  var keeper = notes.pop();                       // the memory always lands last
 
-  // group the two "is a choice" notes so the echo survives the shuffle
-  var blocks = [], i = 0;
-  while (i < notes.length) {
-    if (notes[i].dataset.pair && notes[i + 1] && notes[i + 1].dataset.pair === notes[i].dataset.pair) {
-      blocks.push([notes[i], notes[i + 1]]); i += 2;
-    } else { blocks.push([notes[i]]); i += 1; }
-  }
-  for (var j = blocks.length - 1; j > 0; j--) {
-    var k = Math.floor(Math.random() * (j + 1)), t = blocks[j]; blocks[j] = blocks[k]; blocks[k] = t;
-  }
+<body class="scatter">
 
-  function dress(p) {
-    var n = p.textContent.trim().split(/\s+/).length;
-    // a short note can be shouted, a long one cannot
-    var band = n <= 7 ? [30, 38, 46] : n <= 14 ? [23, 27, 33] : [18, 20, 24];
-    p.style.fontSize = band[Math.floor(Math.random() * band.length)] + "px";
-    p.style.maxWidth = (26 + Math.random() * 18).toFixed(0) + "ch";
-    // a note is pinned to the left, the middle or the right of the board --
-    // three places, not a random nudge, so the page composes instead of drifts
-    var place = ["left", "middle", "right"][Math.floor(Math.random() * 3)];
-    p.classList.add("at-" + place);
-    // and it was put down by hand, so it is never quite straight
-    p.style.transform = "rotate(" + (Math.random() * 1.5 - 0.75).toFixed(2) + "deg)";
-  }
+  <div class="thread"></div>
 
-  blocks.forEach(function (b) { b.forEach(function (p) { dress(p); art.appendChild(p); }); });
-  art.appendChild(keeper);
-})();
-</script></body>
+  <div class="head">
+    <a href="/blog/">blog</a>
+    <a href="/photos/">photo gallery &rarr;</a>
+  </div>
+
+  <article>
+    <span aria-hidden="true" class="folio">12</span>
+    <h1>random stuff</h1>
+    <p class="note" data-n="0">Growing up is finding out you have outgrown your childhood home but are too small to fit in a new one yet.</p>
+    <p class="note" data-n="1">Not having to work for minimum wage is a privilege.</p>
+    <p class="note" data-n="2" data-pair="choice">Being happy is a choice.</p>
+    <p class="note" data-n="3" data-pair="choice">Being worried is a choice - that is never based on external circumstances.</p>
+    <p class="note" data-n="4">I wouldn’t worry too much if you think someone is perfect. Idealization is fleeting infatuation. You’re fucked when you start loving someone for their imperfections.</p>
+    <p class="note keeper" data-n="5"><span class="ln">and this man, who wouldn’t know romance if it kissed him on the mouth; who didn't have an ounce of poetry in his bones, said in the most casual of ways: my most favorite thing about you are the fading pimples on your forehead,</span> <span class="ln last">because <span class="egg">they assure me that you are real</span></span></p>
+  </article>
+
+  <a class="back" href="/blog/">&larr; all posts</a>
+
+  <span class="mark">
+    <a href="/blog/nobodys-daughter.html" aria-label="nobody&rsquo;s daughter"><i>1</i></a>
+    <a href="/blog/to-a-dead-version-of-myself.html" aria-label="to a dead version of myself"><i>1</i></a>
+    <a href="/blog/the-only-thing.html" aria-label="the only thing i have is myself"><i>7</i></a>
+  </span>
+
+  <script src="post.js" defer></script>
+
+</body>
 </html>
