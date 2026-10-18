@@ -26,7 +26,10 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    .page { width: 100%; }
+    /* The pictures hang in a column, not across the whole window: run them
+       wall to wall and a row of portraits stands 700px tall and will not sit
+       in one screen. */
+    .page { width: 100%; max-width: 1100px; margin: 0 auto; }
 
     h1 {
       font-size: 1.1rem;
@@ -62,7 +65,16 @@
        row is the whole composition — the rows are set by hand. */
     .rows { display: flex; flex-direction: column; gap: var(--gap); }
 
-    .row { display: flex; gap: var(--gap); }
+    /* --sum is the row's total aspect, so this holds the row no taller than
+       part of the window however short the window is. A row that would be
+       taller than that sits in from the edges instead of growing. */
+    .row {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--gap);
+      max-width: calc(68vh * var(--sum, 3) + var(--gap) * var(--gaps, 0));
+      margin: 0 auto;
+    }
 
     .row img {
       min-width: 0;
@@ -108,14 +120,20 @@
       .row { flex-direction: column; }
     }
 
-    /* 117 */
+    /* 117. It sits at the top here: in the corner it would hang over the
+       photographs the whole way down. Narrow windows have no room beside
+       the heading, so there it drops back to the corner. */
     .mark {
       position: fixed;
       right: 26px;
-      bottom: 26px;
+      top: 26px;
       text-align: center;
       line-height: 1.04;
       user-select: none;
+    }
+
+    @media (max-width: 1180px) {
+      .mark { top: auto; bottom: 26px; }
     }
 
     .mark a { text-decoration: none; }
@@ -142,57 +160,59 @@
     </div>
 
     <div class="rows">
-      <div class="row">
-        <img src="img/p12.webp" width="1050" height="1400" alt="A turquoise river running through a narrow gorge, a walkway cut into the rock." style="flex: 0.750" decoding="async">
-        <img src="img/p30.webp" width="1050" height="1400" alt="An empty city street at first light, a street lamp hung over the road." style="flex: 0.750" decoding="async">
-        <img src="img/p13.webp" width="1050" height="1050" alt="A city bus at night with Feierabend on its destination sign." style="flex: 1.000" decoding="async">
+      <div class="row" style="--sum: 2.500; --gaps: 2">
+        <img src="img/p12.webp" width="1050" height="1400" alt="A turquoise river running through a narrow gorge, a walkway cut into the rock." style="flex-grow: 0.750" decoding="async">
+        <img src="img/p30.webp" width="1050" height="1400" alt="An empty city street at first light, a street lamp hung over the road." style="flex-grow: 0.750" decoding="async">
+        <img src="img/p13.webp" width="1050" height="1050" alt="A city bus at night with Feierabend on its destination sign." style="flex-grow: 1.000" decoding="async">
       </div>
-      <div class="row">
-        <img src="img/p02.webp" width="1050" height="1050" alt="A breakfast bowl of fried egg, bread, tomatoes and potatoes on a yellow table." loading="lazy" style="flex: 1.000" decoding="async">
-        <img src="img/p17.webp" width="703" height="560" alt="A pink sticky note on a box of biscuits: some almost healthy stuff from Portugal, enjoy." loading="lazy" style="flex: 1.255" decoding="async">
-        <img src="img/p09.webp" width="966" height="966" alt="Two hands on the handlebars of a pink bicycle, a watch on one wrist." loading="lazy" style="flex: 1.000" decoding="async">
-        <img src="img/p03.webp" width="1050" height="1050" alt="A crate of striped decorative gourds outside a supermarket." loading="lazy" style="flex: 1.000" decoding="async">
+      <div class="row" style="--sum: 3.255; --gaps: 2">
+        <img src="img/p02.webp" width="1050" height="1050" alt="A breakfast bowl of fried egg, bread, tomatoes and potatoes on a yellow table." loading="lazy" style="flex-grow: 1.000" decoding="async">
+        <img src="img/p17.webp" width="703" height="560" alt="A pink sticky note on a box of biscuits: some almost healthy stuff from Portugal, enjoy." loading="lazy" style="flex-grow: 1.255" decoding="async">
+        <img src="img/p03.webp" width="1050" height="1050" alt="A crate of striped decorative gourds outside a supermarket." loading="lazy" style="flex-grow: 1.000" decoding="async">
       </div>
-      <div class="row">
-        <img src="img/p08.webp" width="526" height="658" alt="A smartwatch on a wrist showing a message, resting on a bench." loading="lazy" style="flex: 0.799" decoding="async">
-        <img src="img/p15.webp" width="975" height="1300" alt="Someone in a blue hood standing under trees in bright sun, face turned away." loading="lazy" style="flex: 0.750" decoding="async">
-        <img src="img/p23.webp" width="695" height="868" alt="A smartwatch over a laptop showing three hours and twenty-eight minutes of sleep." loading="lazy" style="flex: 0.801" decoding="async">
-        <img src="img/p19.webp" width="975" height="1300" alt="A painted festival tent at night with a crowd outside its doors." loading="lazy" style="flex: 0.750" decoding="async">
+      <div class="row" style="--sum: 4.302; --gaps: 4">
+        <img src="img/p22.webp" width="609" height="609" alt="A smartwatch showing a notification, an office kitchen behind." loading="lazy" style="flex-grow: 1.000" decoding="async">
+        <img src="img/p18.webp" width="675" height="900" alt="A supermarket freezer pack of creamed spinach, the photographer reflected in the glass." loading="lazy" style="flex-grow: 0.750" decoding="async">
+        <img src="img/p32.webp" width="675" height="900" alt="A bottle of gingerbread-flavoured cola in a supermarket crate." loading="lazy" style="flex-grow: 0.750" decoding="async">
+        <img src="img/p16.webp" width="483" height="602" alt="A smartwatch on a desk: let’s call it a week u guys, we did our best." loading="lazy" style="flex-grow: 0.802" decoding="async">
+        <img src="img/p14.webp" width="900" height="900" alt="An empty office with the monitors switched off." loading="lazy" style="flex-grow: 1.000" decoding="async">
       </div>
-      <div class="row">
-        <img src="img/p20.webp" width="871" height="868" alt="A hand pointing at a printed sheet that begins: sorry, no chatting allowed here." loading="lazy" style="flex: 1.004" decoding="async">
-        <img src="img/p05.webp" width="1050" height="1400" alt="An outdoor bar at night lit in red and pink, empty chairs in the foreground." loading="lazy" style="flex: 0.750" decoding="async">
+      <div class="row" style="--sum: 1.875; --gaps: 1">
+        <img src="img/p09.webp" width="1480" height="1700" alt="A hand on the handlebars of a pink bicycle, a watch on the wrist: stop riding bike and text, no wonder you hit that post." loading="lazy" style="flex-grow: 0.871" decoding="async">
+        <img src="img/p20.webp" width="871" height="868" alt="A hand pointing at a printed sheet that begins: sorry, no chatting allowed here." loading="lazy" style="flex-grow: 1.004" decoding="async">
       </div>
-      <div class="row">
-        <img src="img/p27.webp" width="900" height="600" alt="Rain on a train window, a farmhouse under low mist." loading="lazy" style="flex: 1.500" decoding="async">
-        <img src="img/p22.webp" width="609" height="609" alt="A smartwatch showing a notification, an office kitchen behind." loading="lazy" style="flex: 1.000" decoding="async">
-        <img src="img/p18.webp" width="675" height="900" alt="A supermarket freezer pack of creamed spinach, the photographer reflected in the glass." loading="lazy" style="flex: 0.750" decoding="async">
-        <img src="img/p32.webp" width="675" height="900" alt="A bottle of gingerbread-flavoured cola in a supermarket crate." loading="lazy" style="flex: 0.750" decoding="async">
+      <div class="row" style="--sum: 2.301; --gaps: 2">
+        <img src="img/p23.webp" width="695" height="868" alt="A smartwatch over a laptop showing three hours and twenty-eight minutes of sleep." loading="lazy" style="flex-grow: 0.801" decoding="async">
+        <img src="img/p19.webp" width="975" height="1300" alt="A painted festival tent at night with a crowd outside its doors." loading="lazy" style="flex-grow: 0.750" decoding="async">
+        <img src="img/p24.webp" width="975" height="1300" alt="Cows grazing a lit meadow below a mountain, seen from a train at sunrise." loading="lazy" style="flex-grow: 0.750" decoding="async">
       </div>
-      <div class="row">
-        <img src="img/p31.webp" width="1400" height="787" alt="Three crates outside a supermarket: two heaped with gourds, the middle one nearly empty." loading="lazy" style="flex: 1.779" decoding="async">
+      <div class="row" style="--sum: 1.779; --gaps: 0">
+        <img src="img/p31.webp" width="1400" height="787" alt="Three crates outside a supermarket: two heaped with gourds, the middle one nearly empty." loading="lazy" style="flex-grow: 1.779" decoding="async">
       </div>
-      <div class="row">
-        <img src="img/p16.webp" width="483" height="602" alt="A smartwatch on a desk: let’s call it a week u guys, we did our best." loading="lazy" style="flex: 0.802" decoding="async">
-        <img src="img/p14.webp" width="900" height="900" alt="An empty office with the monitors switched off." loading="lazy" style="flex: 1.000" decoding="async">
-        <img src="img/p29.webp" width="675" height="900" alt="An aeroplane wing above the clouds at dusk." loading="lazy" style="flex: 0.750" decoding="async">
-        <img src="img/p07.webp" width="900" height="900" alt="A bowl of roast pumpkin, chicken and greens on a yellow table." loading="lazy" style="flex: 1.000" decoding="async">
-        <img src="img/p06.webp" width="900" height="900" alt="A stone fountain standing in an empty park under old trees." loading="lazy" style="flex: 1.000" decoding="async">
+      <div class="row" style="--sum: 4.250; --gaps: 3">
+        <img src="img/p29.webp" width="675" height="900" alt="An aeroplane wing above the clouds at dusk." loading="lazy" style="flex-grow: 0.750" decoding="async">
+        <img src="img/p27.webp" width="900" height="600" alt="Rain on a train window, a farmhouse under low mist." loading="lazy" style="flex-grow: 1.500" decoding="async">
+        <img src="img/p07.webp" width="900" height="900" alt="A bowl of roast pumpkin, chicken and greens on a yellow table." loading="lazy" style="flex-grow: 1.000" decoding="async">
+        <img src="img/p06.webp" width="900" height="900" alt="A stone fountain standing in an empty park under old trees." loading="lazy" style="flex-grow: 1.000" decoding="async">
       </div>
-      <div class="row">
-        <img src="img/p10.webp" width="935" height="798" alt="A workshop poster covered in handwriting: is life a video game?" loading="lazy" style="flex: 1.172" decoding="async">
-        <img src="img/p21.webp" width="1050" height="1312" alt="A bonfire burning in a metal pit at night, people on benches beside it." loading="lazy" style="flex: 0.800" decoding="async">
-        <img src="img/p11.webp" width="1050" height="1400" alt="A bouquet of pink roses and baby’s breath in hard low sun." loading="lazy" style="flex: 0.750" decoding="async">
+      <div class="row" style="--sum: 2.352; --gaps: 2">
+        <img src="img/p28.webp" width="975" height="1300" alt="A latte held at a windowsill, a green field and benches below." loading="lazy" style="flex-grow: 0.750" decoding="async">
+        <img src="img/p01.webp" width="966" height="1204" alt="An empty beer-garden table with a coffee cup and the umbrellas closed." loading="lazy" style="flex-grow: 0.802" decoding="async">
+        <img src="img/p08.webp" width="526" height="658" alt="A smartwatch on a wrist showing a message, resting on a bench." loading="lazy" style="flex-grow: 0.799" decoding="async">
       </div>
-      <div class="row">
-        <img src="img/p24.webp" width="975" height="1300" alt="Cows grazing a lit meadow below a mountain, seen from a train at sunrise." loading="lazy" style="flex: 0.750" decoding="async">
-        <img src="img/p28.webp" width="975" height="1300" alt="A latte held at a windowsill, a green field and benches below." loading="lazy" style="flex: 0.750" decoding="async">
-        <img src="img/p01.webp" width="966" height="1204" alt="An empty beer-garden table with a coffee cup and the umbrellas closed." loading="lazy" style="flex: 0.802" decoding="async">
-        <img src="img/p04.webp" width="1029" height="1288" alt="A hand holding a film case in front of a crowded bookshelf." loading="lazy" style="flex: 0.799" decoding="async">
+      <div class="row" style="--sum: 2.722; --gaps: 2">
+        <img src="img/p21.webp" width="1050" height="1312" alt="A bonfire burning in a metal pit at night, people on benches beside it." loading="lazy" style="flex-grow: 0.800" decoding="async">
+        <img src="img/p05.webp" width="1050" height="1400" alt="An outdoor bar at night lit in red and pink, empty chairs in the foreground." loading="lazy" style="flex-grow: 0.750" decoding="async">
+        <img src="img/p10.webp" width="935" height="798" alt="A workshop poster covered in handwriting: is life a video game?" loading="lazy" style="flex-grow: 1.172" decoding="async">
       </div>
-      <div class="row">
-        <img src="img/p25.webp" width="1050" height="700" alt="An empty mountain restaurant at blue hour, snow peaks through the glass." loading="lazy" style="flex: 1.500" decoding="async">
-        <img src="img/p26.webp" width="1050" height="1400" alt="Sunrise over a valley seen through glass, a plate of melon on the table." loading="lazy" style="flex: 0.750" decoding="async">
+      <div class="row" style="--sum: 2.299; --gaps: 1">
+        <img src="img/p04.webp" width="1029" height="1288" alt="A hand holding a film case in front of a crowded bookshelf." loading="lazy" style="flex-grow: 0.799" decoding="async">
+        <img src="img/p25.webp" width="1050" height="700" alt="An empty mountain restaurant at blue hour, snow peaks through the glass." loading="lazy" style="flex-grow: 1.500" decoding="async">
+      </div>
+      <div class="row" style="--sum: 2.250; --gaps: 2">
+        <img src="img/p15.webp" width="975" height="1300" alt="Someone in a blue hood standing under trees in bright sun, face turned away." loading="lazy" style="flex-grow: 0.750" decoding="async">
+        <img src="img/p11.webp" width="1050" height="1400" alt="A bouquet of pink roses and baby’s breath in hard low sun." loading="lazy" style="flex-grow: 0.750" decoding="async">
+        <img src="img/p26.webp" width="1050" height="1400" alt="Sunrise over a valley seen through glass, a plate of melon on the table." loading="lazy" style="flex-grow: 0.750" decoding="async">
       </div>
     </div>
 
