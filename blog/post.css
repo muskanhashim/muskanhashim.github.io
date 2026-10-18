@@ -467,6 +467,16 @@ article .update p { font-size: 1rem; }
 .drawing svg { width: 100%; height: auto; display: block; stroke: currentColor; fill: none;
   stroke-width: 1.15; stroke-linecap: round; stroke-linejoin: round; }
 
+/* a drawing can be a link -- the radio plays the song the piece is named
+   after. It keeps the drawing's own grey until you reach for it. */
+article .drawing a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+article .drawing a:hover { color: var(--accent); }
+
 /* one drawing is meant to take the whole side of its page */
 .drawing.huge {
   width: clamp(260px, 40vw, 460px);
