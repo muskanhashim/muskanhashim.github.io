@@ -352,8 +352,8 @@ article .update p { font-size: 1rem; }
 
 /* a dedication is not the first paragraph of the essay, it is a threshold */
 .dedication p:first-of-type {
-  font-size: 1.15rem;
-  line-height: 1.55;
+  font-size: 1.04rem;
+  line-height: 1.62;
   color: var(--accent);
   font-style: italic;
   padding-bottom: 1.8em;
