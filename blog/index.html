@@ -241,14 +241,11 @@
     .forget:hover { color: var(--accent); }
     .forget:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
 
-    /* not a button with edges: a line in the same hand as the rest of the
-       site, with the drawn arrow the home page uses */
+    /* centred under whichever view is showing, in the same hand as the
+       rest of the site: no edges, no arrow */
     .pick {
-      display: flex;
-      width: max-content;
-      align-items: center;
-      gap: 12px;
-      margin-top: 72px;
+      display: block;
+      margin: 56px auto 0;
       padding: 0;
       border: 0;
       background: none;
@@ -256,37 +253,13 @@
       font-family: var(--serif);
       font-size: 1.05rem;
       color: var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 4px;
+      transition: color 180ms ease, border-color 180ms ease;
     }
 
-    .pick i {
-      position: relative;
-      display: inline-block;
-      width: 52px;
-      height: 1px;
-      background: var(--ink);
-      transition: width 260ms cubic-bezier(.2,.7,.3,1), background 180ms ease;
-    }
-
-    .pick i::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      top: -2.5px;
-      width: 6px;
-      height: 6px;
-      border-top: 1px solid currentColor;
-      border-right: 1px solid currentColor;
-      color: var(--ink);
-      transform: rotate(45deg);
-      transition: color 180ms ease;
-    }
-
-    .pick:hover { color: var(--accent); }
-    .pick:hover i { width: 104px; background: var(--accent); }
-    .pick:hover i::after { color: var(--accent); }
+    .pick:hover { color: var(--accent); border-bottom-color: var(--accent); }
     .pick:focus-visible { outline: 1px solid var(--accent); outline-offset: 6px; }
-
-    @media (prefers-reduced-motion: reduce) { .pick i { transition: none; } }
 
     .back {
       display: block;
@@ -361,7 +334,7 @@
 
     <div class="read-view" id="read" hidden></div>
 
-    <button type="button" class="pick" id="pick">pick one for me<i></i></button>
+    <button type="button" class="pick" id="pick">pick one for me</button>
 
     <a class="back" href="/">&larr; back</a>
 
