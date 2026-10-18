@@ -86,6 +86,10 @@
       flex-wrap: wrap;
       align-items: baseline;
       justify-content: center;
+      /* the cloud is the only thing on the page in this view, so its lines
+         spread down the whole of it rather than bunching at the top */
+      align-content: space-evenly;
+      min-height: max(300px, calc(100vh - 400px));
       gap: 12px 28px;
       text-align: center;
     }
@@ -186,6 +190,7 @@
     @media (max-width: 760px) {
       body { padding: 40px 18px 72px; }
       .note { white-space: normal; }
+      .wall { min-height: 0; align-content: flex-start; gap: 14px 22px; }
       .row { flex-wrap: wrap; height: auto !important; }
       .row > * { flex: 1 1 46% !important; min-height: 112px; }
     }
