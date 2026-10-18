@@ -22,14 +22,15 @@
       font-family: var(--serif);
       background: var(--bg);
       color: var(--ink);
-      padding: 56px 32px 96px;
+      padding: 56px var(--gap) 96px;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* The pictures hang in a column, not across the whole window: run them
-       wall to wall and a row of portraits stands 700px tall and will not sit
-       in one screen. */
-    .page { width: 100%; max-width: 1100px; margin: 0 auto; }
+    /* The pictures run to the edges: the margin left and right is the same
+       as the gap between them, so there is no white frame around the wall.
+       Rows hold their height because they carry more frames, not because
+       the wall is narrow. */
+    .page { width: 100%; max-width: 1600px; margin: 0 auto; }
 
     h1 {
       font-size: 1.1rem;
@@ -95,9 +96,15 @@
       .row img { transition: none; }
     }
 
+    /* the way out and the 117, on one line under the wall */
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 64px;
+    }
+
     .back {
-      display: block;
-      margin-top: 72px;
       font-size: 0.85rem;
       color: var(--muted);
       text-decoration: none;
@@ -115,25 +122,18 @@
 
     @media (max-width: 620px) {
       :root { --gap: 10px; }
-      body { padding: 40px 18px 72px; }
+      body { padding: 40px var(--gap) 72px; }
       .head { margin-bottom: 36px; }
       .row { flex-direction: column; }
     }
 
-    /* 117. It sits at the top here: in the corner it would hang over the
-       photographs the whole way down. Narrow windows have no room beside
-       the heading, so there it drops back to the corner. */
+    /* 117 stands in the page here rather than fixed in a corner -- with the
+       pictures running to the edges, a fixed corner is always on top of one
+       of them. */
     .mark {
-      position: fixed;
-      right: 26px;
-      top: 26px;
       text-align: center;
       line-height: 1.04;
       user-select: none;
-    }
-
-    @media (max-width: 1180px) {
-      .mark { top: auto; bottom: 26px; }
     }
 
     .mark a { text-decoration: none; }
@@ -177,49 +177,46 @@
         <img src="img/p16.webp" width="483" height="602" alt="A smartwatch on a desk: let’s call it a week u guys, we did our best." loading="lazy" style="flex-grow: 0.802" decoding="async">
         <img src="img/p14.webp" width="900" height="900" alt="An empty office with the monitors switched off." loading="lazy" style="flex-grow: 1.000" decoding="async">
       </div>
-      <div class="row" style="--sum: 1.875; --gaps: 1">
+      <div class="row" style="--sum: 2.625; --gaps: 2">
         <img src="img/p09.webp" width="1480" height="1700" alt="A hand on the handlebars of a pink bicycle, a watch on the wrist: stop riding bike and text, no wonder you hit that post." loading="lazy" style="flex-grow: 0.871" decoding="async">
         <img src="img/p20.webp" width="871" height="868" alt="A hand pointing at a printed sheet that begins: sorry, no chatting allowed here." loading="lazy" style="flex-grow: 1.004" decoding="async">
+        <img src="img/p05.webp" width="1050" height="1400" alt="An outdoor bar at night lit in red and pink, empty chairs in the foreground." loading="lazy" style="flex-grow: 0.750" decoding="async">
       </div>
-      <div class="row" style="--sum: 2.301; --gaps: 2">
+      <div class="row" style="--sum: 3.100; --gaps: 3">
+        <img src="img/p08.webp" width="526" height="658" alt="A smartwatch on a wrist showing a message, resting on a bench." loading="lazy" style="flex-grow: 0.799" decoding="async">
+        <img src="img/p15.webp" width="975" height="1300" alt="Someone in a blue hood standing under trees in bright sun, face turned away." loading="lazy" style="flex-grow: 0.750" decoding="async">
         <img src="img/p23.webp" width="695" height="868" alt="A smartwatch over a laptop showing three hours and twenty-eight minutes of sleep." loading="lazy" style="flex-grow: 0.801" decoding="async">
         <img src="img/p19.webp" width="975" height="1300" alt="A painted festival tent at night with a crowd outside its doors." loading="lazy" style="flex-grow: 0.750" decoding="async">
-        <img src="img/p24.webp" width="975" height="1300" alt="Cows grazing a lit meadow below a mountain, seen from a train at sunrise." loading="lazy" style="flex-grow: 0.750" decoding="async">
       </div>
-      <div class="row" style="--sum: 1.779; --gaps: 0">
+      <div class="row" style="--sum: 3.279; --gaps: 1">
         <img src="img/p31.webp" width="1400" height="787" alt="Three crates outside a supermarket: two heaped with gourds, the middle one nearly empty." loading="lazy" style="flex-grow: 1.779" decoding="async">
+        <img src="img/p25.webp" width="1050" height="700" alt="An empty mountain restaurant at blue hour, snow peaks through the glass." loading="lazy" style="flex-grow: 1.500" decoding="async">
       </div>
       <div class="row" style="--sum: 4.250; --gaps: 3">
-        <img src="img/p29.webp" width="675" height="900" alt="An aeroplane wing above the clouds at dusk." loading="lazy" style="flex-grow: 0.750" decoding="async">
         <img src="img/p27.webp" width="900" height="600" alt="Rain on a train window, a farmhouse under low mist." loading="lazy" style="flex-grow: 1.500" decoding="async">
         <img src="img/p07.webp" width="900" height="900" alt="A bowl of roast pumpkin, chicken and greens on a yellow table." loading="lazy" style="flex-grow: 1.000" decoding="async">
         <img src="img/p06.webp" width="900" height="900" alt="A stone fountain standing in an empty park under old trees." loading="lazy" style="flex-grow: 1.000" decoding="async">
+        <img src="img/p29.webp" width="675" height="900" alt="An aeroplane wing above the clouds at dusk." loading="lazy" style="flex-grow: 0.750" decoding="async">
       </div>
-      <div class="row" style="--sum: 2.352; --gaps: 2">
+      <div class="row" style="--sum: 3.101; --gaps: 3">
+        <img src="img/p24.webp" width="975" height="1300" alt="Cows grazing a lit meadow below a mountain, seen from a train at sunrise." loading="lazy" style="flex-grow: 0.750" decoding="async">
         <img src="img/p28.webp" width="975" height="1300" alt="A latte held at a windowsill, a green field and benches below." loading="lazy" style="flex-grow: 0.750" decoding="async">
         <img src="img/p01.webp" width="966" height="1204" alt="An empty beer-garden table with a coffee cup and the umbrellas closed." loading="lazy" style="flex-grow: 0.802" decoding="async">
-        <img src="img/p08.webp" width="526" height="658" alt="A smartwatch on a wrist showing a message, resting on a bench." loading="lazy" style="flex-grow: 0.799" decoding="async">
-      </div>
-      <div class="row" style="--sum: 2.722; --gaps: 2">
-        <img src="img/p21.webp" width="1050" height="1312" alt="A bonfire burning in a metal pit at night, people on benches beside it." loading="lazy" style="flex-grow: 0.800" decoding="async">
-        <img src="img/p05.webp" width="1050" height="1400" alt="An outdoor bar at night lit in red and pink, empty chairs in the foreground." loading="lazy" style="flex-grow: 0.750" decoding="async">
-        <img src="img/p10.webp" width="935" height="798" alt="A workshop poster covered in handwriting: is life a video game?" loading="lazy" style="flex-grow: 1.172" decoding="async">
-      </div>
-      <div class="row" style="--sum: 2.299; --gaps: 1">
         <img src="img/p04.webp" width="1029" height="1288" alt="A hand holding a film case in front of a crowded bookshelf." loading="lazy" style="flex-grow: 0.799" decoding="async">
-        <img src="img/p25.webp" width="1050" height="700" alt="An empty mountain restaurant at blue hour, snow peaks through the glass." loading="lazy" style="flex-grow: 1.500" decoding="async">
       </div>
-      <div class="row" style="--sum: 2.250; --gaps: 2">
-        <img src="img/p15.webp" width="975" height="1300" alt="Someone in a blue hood standing under trees in bright sun, face turned away." loading="lazy" style="flex-grow: 0.750" decoding="async">
+      <div class="row" style="--sum: 3.472; --gaps: 3">
+        <img src="img/p21.webp" width="1050" height="1312" alt="A bonfire burning in a metal pit at night, people on benches beside it." loading="lazy" style="flex-grow: 0.800" decoding="async">
+        <img src="img/p10.webp" width="935" height="798" alt="A workshop poster covered in handwriting: is life a video game?" loading="lazy" style="flex-grow: 1.172" decoding="async">
         <img src="img/p11.webp" width="1050" height="1400" alt="A bouquet of pink roses and baby’s breath in hard low sun." loading="lazy" style="flex-grow: 0.750" decoding="async">
         <img src="img/p26.webp" width="1050" height="1400" alt="Sunrise over a valley seen through glass, a plate of melon on the table." loading="lazy" style="flex-grow: 0.750" decoding="async">
       </div>
     </div>
 
-    <a class="back" href="/">&larr; back</a>
+    <div class="foot">
+      <a class="back" href="/">&larr; back</a>
+      <span class="mark"><a href="/blog/nobodys-daughter.html" aria-label="nobody’s daughter"><i>1</i></a><a href="/blog/to-a-dead-version-of-myself.html" aria-label="to a dead version of myself"><i>1</i></a><a href="/blog/the-only-thing.html" aria-label="the only thing i have is myself"><i>7</i></a></span>
+    </div>
 
   </div>
-
-  <span class="mark"><a href="/blog/nobodys-daughter.html" aria-label="nobody’s daughter"><i>1</i></a><a href="/blog/to-a-dead-version-of-myself.html" aria-label="to a dead version of myself"><i>1</i></a><a href="/blog/the-only-thing.html" aria-label="the only thing i have is myself"><i>7</i></a></span>
 </body>
 </html>
