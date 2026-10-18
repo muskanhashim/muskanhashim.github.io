@@ -123,8 +123,10 @@ p {
   color: var(--ink);
 }
 
-/* a short paragraph in the middle of a piece is a punchline, not prose:
-   set it larger, with air either side, and let it hang into the margin */
+/* voices. which paragraph gets which is decided by reading the piece, not
+   by counting its words: loud for the line that lands, hush for the one
+   said under the breath. most pieces get one of each at most, and several
+   get neither. */
 article p.beat {
   font-size: 1.55rem;
   line-height: 1.38;
@@ -136,6 +138,20 @@ article p.beat.ask { font-style: italic; }
 @media (min-width: 900px) {
   article p.beat { margin-left: -0.55em; }
 }
+
+/* the smaller voice: an aside, an admission, a note to self */
+article p.hush {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--soft);
+  margin: 2em 0;
+}
+
+@media (min-width: 900px) {
+  article p.hush { margin-left: 1.6em; }
+}
+
+.book article > p.hush { text-indent: 0; margin-bottom: 2em; }
 
 /* the last paragraph gets a breath before it lands */
 article p.landing { margin-top: 2.6em; }
