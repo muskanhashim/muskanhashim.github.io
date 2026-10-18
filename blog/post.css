@@ -206,6 +206,17 @@ article p.landing { margin-top: 2.6em; }
 .step2 { margin-left: 1.7em; font-size: 0.95em; }
 .step3 { margin-left: 3.4em; font-size: 0.9em; }
 
+/* the sentence that picks up again once the steps have stopped */
+.after { display: block; text-indent: 0; margin-top: 1.15em; }
+
+/* one line the paragraph steps back from, and sets in the middle */
+.alone {
+  display: block;
+  text-indent: 0;
+  text-align: center;
+  margin: 1.9em 0;
+}
+
 /* a word let down onto the next line, close enough to keep the sentence */
 .drop { display: block; margin: 0.12em 0 0 1.8em; }
 
