@@ -183,6 +183,46 @@
 
     .t { margin-top: auto; line-height: 1.16; overflow-wrap: break-word; transition: color 140ms ease; }
 
+    /* the list of what you have already opened, set the way this index
+       used to look: title left, date right, a hairline between */
+    .read-view { max-width: 640px; }
+
+    .read-count {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .read-view ul { list-style: none; }
+
+    .read-view li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 24px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .read-view li:first-child { border-top: 1px solid var(--rule); }
+    .read-view a { color: var(--accent); text-decoration: none; }
+    .read-view a:hover { text-decoration: underline; }
+    .read-view .d { font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
+
+    .forget {
+      margin-top: 32px;
+      font-family: var(--serif);
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: none;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .forget:hover { color: var(--accent); }
+    .forget:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
+
     .back {
       display: block;
       margin-top: 72px;
@@ -239,6 +279,8 @@
       <button type="button" data-view="wall" aria-pressed="true">word cloud</button>
       <span class="sep">/</span>
       <button type="button" data-view="tiles" aria-pressed="false">tiles</button>
+      <span class="sep">/</span>
+      <button type="button" data-view="read" aria-pressed="false">what you've read</button>
     </div>
 
     <div class="wall" id="wall"></div>
@@ -246,6 +288,8 @@
     <p class="note" id="note" hidden>same blog entries, in tile form, in case the chaotic word cloud triggers you</p>
 
     <div class="tiles" id="tiles" hidden></div>
+
+    <div class="read-view" id="read" hidden></div>
 
     <a class="back" href="/">&larr; back</a>
 
@@ -431,14 +475,56 @@
     var VIEW_KEY = "view";
     var wall = document.getElementById("wall");
     var tiles = document.getElementById("tiles");
+    var read = document.getElementById("read");
     var note = document.getElementById("note");
     var buttons = document.querySelectorAll(".views button");
     var tilesDrawn = false;
 
+    function renderRead() {
+      var host = document.getElementById("read");
+      host.textContent = "";
+
+      var seen = READ.map(function (u) {
+        for (var i = 0; i < POSTS.length; i++) if (POSTS[i].u === u) return POSTS[i];
+        return null;
+      }).filter(Boolean);
+
+      var count = el("p", "read-count", seen.length
+        ? "you have opened " + seen.length + " of " + POSTS.length + ", in this order"
+        : "you have not opened any of them yet. the ones you have read show in pink.");
+      host.appendChild(count);
+
+      if (seen.length) {
+        var ul = document.createElement("ul");
+        seen.forEach(function (p) {
+          var li = document.createElement("li");
+          var a = document.createElement("a");
+          a.href = p.u;
+          a.textContent = ("0" + p.n).slice(-2) + "  " + p.t;
+          li.appendChild(a);
+          li.appendChild(el("span", "d", p.d || ""));
+          ul.appendChild(li);
+        });
+        host.appendChild(ul);
+
+        var forget = el("button", "forget", "forget what i have read");
+        forget.type = "button";
+        forget.addEventListener("click", function () {
+          READ.length = 0;
+          try { localStorage.removeItem(READ_KEY); } catch (e) {}
+          renderRead(); renderWall(); if (!tiles.hidden) renderTiles();
+        });
+        host.appendChild(forget);
+      }
+    }
+
     function show(view) {
       var isTiles = view === "tiles";
-      wall.hidden = isTiles;
+      var isRead = view === "read";
+      wall.hidden = isTiles || isRead;
       tiles.hidden = note.hidden = !isTiles;
+      read.hidden = !isRead;
+      if (isRead) renderRead();
       Array.prototype.forEach.call(buttons, function (b) {
         b.setAttribute("aria-pressed", String(b.getAttribute("data-view") === view));
       });
@@ -454,7 +540,7 @@
 
     var saved;
     try { saved = localStorage.getItem(VIEW_KEY); } catch (e) {}
-    if (saved === "tiles") show("tiles");
+    if (saved === "tiles" || saved === "read") show(saved);
 
     window.addEventListener("resize", function () {
       if (!tiles.hidden) renderTiles();
