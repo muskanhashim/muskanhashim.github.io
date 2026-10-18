@@ -54,9 +54,41 @@
 
     a:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
 
+    /* switching between the two views */
+
+    .views {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 44px;
+      font-size: 0.85rem;
+    }
+
+    .views button {
+      font: inherit;
+      font-family: var(--serif);
+      background: none;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    .views button:hover { color: var(--accent); }
+    .views button[aria-pressed="true"] { color: var(--ink); }
+    .views button:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
+    .views .sep { color: var(--rule); }
+
     /* the wall */
 
-    .wall { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 28px; }
+    .wall {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: center;
+      gap: 12px 28px;
+      text-align: center;
+    }
 
     .wall a {
       color: var(--ink);
@@ -82,14 +114,16 @@
 
     .wall a:hover .d { opacity: 1; }
 
-    .seam { height: 1px; background: var(--rule); margin: 96px 0 28px; }
-
     .note {
       font-size: 0.85rem;
       color: var(--muted);
-      max-width: 62ch;
       margin-bottom: 26px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+
+    [hidden] { display: none !important; }
 
     /* the tiles */
 
@@ -117,7 +151,25 @@
     .tiles a:visited,
     .tiles a.read { color: var(--accent); }
 
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+
     .d { font-size: 0.7rem; color: var(--muted); }
+
+    .num { font-size: 0.7rem; color: var(--muted); }
+
+    .wall .num {
+      font-size: 0.5em;
+      margin-right: 5px;
+      top: -0.6em;
+      color: var(--muted);
+    }
+
+    .tiles a:hover .num { color: var(--accent); }
 
     .t { margin-top: auto; line-height: 1.16; overflow-wrap: break-word; transition: color 140ms ease; }
 
@@ -133,7 +185,7 @@
 
     @media (max-width: 760px) {
       body { padding: 40px 18px 72px; }
-      .seam { margin: 56px 0 22px; }
+      .note { white-space: normal; }
       .row { flex-wrap: wrap; height: auto !important; }
       .row > * { flex: 1 1 46% !important; min-height: 112px; }
     }
@@ -156,13 +208,17 @@
       <a class="elsewhere" href="/photos/">photo gallery &rarr;</a>
     </div>
 
+    <div class="views">
+      <button type="button" data-view="wall" aria-pressed="true">word cloud</button>
+      <span class="sep">/</span>
+      <button type="button" data-view="tiles" aria-pressed="false">tiles</button>
+    </div>
+
     <div class="wall" id="wall"></div>
 
-    <div class="seam"></div>
+    <p class="note" id="note" hidden>same blog entries, in tile form, in case the chaotic word cloud triggers you</p>
 
-    <p class="note">same blog entries as above but in tile form, in case the chaotic word cloud above triggers you</p>
-
-    <div class="tiles" id="tiles"></div>
+    <div class="tiles" id="tiles" hidden></div>
 
     <a class="back" href="/">&larr; back</a>
 
@@ -171,21 +227,21 @@
 <script>
   (function () {
     var POSTS = [
-      { t: "nobody\u2019s daughter",                             d: "sep 2020", u: "nobodys-daughter.html" },
-      { t: "learning to live with your (sins) self",             d: "jul 2022", u: "live-with-yourself.html" },
-      { t: "train station human",                                d: "aug 2025", u: "train-station-human.html" },
-      { t: "thoughts from the er",                               d: "sep 2025", u: "thoughts-from-the-er.html" },
-      { t: "to a dead version of myself",                        d: "feb 2026", u: "to-a-dead-version-of-myself.html" },
-      { t: "dear german dad,",                                   d: "may 2026", u: "dear-german-dad.html" },
-      { t: "is it a privilege to be principled",                 d: "jun 2026", u: "is-it-a-privilege-to-be-principled.html" },
-      { t: "on why we deserve privacy and personal freedoms",    d: "jun 2026", u: "on-why-we-deserve-privacy-and-personal-freedoms.html" },
-      { t: "on ai-free will.",                                   d: "jul 2026", u: "free-will.html" },
-      { t: "the night we met",                                   d: "aug 2026", u: "the-night-we-met.html" },
-      { t: "beautiful things",                                   d: "aug 2026", u: "beautiful-things.html" },
-      { t: "random stuff",                                       d: "oct 2026", u: "random-stuff.html" },
-      { t: "the only thing i have is myself",                    d: "oct 2026", u: "the-only-thing.html" },
-      { t: "fight me.",                                          d: "oct 2026", u: "fight-me.html" },
-      { t: "the most important thing you can learn in life?",    d: "",         u: "most-imp.html" }
+      { n:  1, t: "nobody\u2019s daughter",                             d: "sep 2020", u: "nobodys-daughter.html" },
+      { n:  2, t: "learning to live with your (sins) self",             d: "jul 2022", u: "live-with-yourself.html" },
+      { n:  3, t: "train station human",                                d: "aug 2025", u: "train-station-human.html" },
+      { n:  4, t: "thoughts from the er",                               d: "sep 2025", u: "thoughts-from-the-er.html" },
+      { n:  5, t: "to a dead version of myself",                        d: "feb 2026", u: "to-a-dead-version-of-myself.html" },
+      { n:  6, t: "dear german dad,",                                   d: "may 2026", u: "dear-german-dad.html" },
+      { n:  7, t: "is it a privilege to be principled",                 d: "jun 2026", u: "is-it-a-privilege-to-be-principled.html" },
+      { n:  8, t: "on why we deserve privacy and personal freedoms",    d: "jun 2026", u: "on-why-we-deserve-privacy-and-personal-freedoms.html" },
+      { n:  9, t: "on ai-free will.",                                   d: "jul 2026", u: "free-will.html" },
+      { n: 10, t: "the night we met",                                   d: "aug 2026", u: "the-night-we-met.html" },
+      { n: 11, t: "beautiful things",                                   d: "aug 2026", u: "beautiful-things.html" },
+      { n: 12, t: "random stuff",                                       d: "oct 2026", u: "random-stuff.html" },
+      { n: 13, t: "the only thing i have is myself",                    d: "oct 2026", u: "the-only-thing.html" },
+      { n: 14, t: "fight me.",                                          d: "oct 2026", u: "fight-me.html" },
+      { n: 15, t: "the most important thing you can learn in life?",    d: "",         u: "most-imp.html" }
     ];
 
     // :visited handles this natively, but browsers now partition it and clear it
@@ -243,7 +299,10 @@
 
     function tile(p, width, height) {
       var a = postLink(p);
-      if (p.d) a.appendChild(el("span", "d", p.d));
+      var meta = el("span", "meta");
+      meta.appendChild(el("span", "num", ("0" + p.n).slice(-2)));
+      if (p.d) meta.appendChild(el("span", "d", p.d));
+      a.appendChild(meta);
       var t = el("span", "t", p.t);
       t.style.fontSize = titleSize(p.t, width, height) + "px";
       a.appendChild(t);
@@ -254,7 +313,9 @@
       var host = document.getElementById("tiles");
       host.textContent = "";
       var full = host.clientWidth || 1084;
-      var queue = shuffled(POSTS);
+      // the cloud is the one that shuffles; this view is the one you come
+      // back to, so it holds a steady order -- newest first
+      var queue = POSTS.slice().reverse();
 
       while (queue.length) {
         // a single leftover joins the row above rather than starting a bare one
@@ -324,6 +385,7 @@
       host.textContent = "";
       shuffled(POSTS).forEach(function (p) {
         var a = postLink(p);
+        a.appendChild(el("sup", "num", ("0" + p.n).slice(-2)));
         a.appendChild(document.createTextNode(p.t));
         if (p.d) a.appendChild(el("span", "d", p.d));
         var n = p.t.length;
@@ -334,7 +396,39 @@
     }
 
     renderWall();
-    renderTiles();
+
+    // one view at a time, and the choice is remembered
+    var VIEW_KEY = "view";
+    var wall = document.getElementById("wall");
+    var tiles = document.getElementById("tiles");
+    var note = document.getElementById("note");
+    var buttons = document.querySelectorAll(".views button");
+    var tilesDrawn = false;
+
+    function show(view) {
+      var isTiles = view === "tiles";
+      wall.hidden = isTiles;
+      tiles.hidden = note.hidden = !isTiles;
+      Array.prototype.forEach.call(buttons, function (b) {
+        b.setAttribute("aria-pressed", String(b.getAttribute("data-view") === view));
+      });
+      // the tile rows are measured against the container, so they can only be
+      // laid out once the container is actually on the page
+      if (isTiles) { renderTiles(); tilesDrawn = true; }
+      try { localStorage.setItem(VIEW_KEY, view); } catch (e) {}
+    }
+
+    Array.prototype.forEach.call(buttons, function (b) {
+      b.addEventListener("click", function () { show(b.getAttribute("data-view")); });
+    });
+
+    var saved;
+    try { saved = localStorage.getItem(VIEW_KEY); } catch (e) {}
+    if (saved === "tiles") show("tiles");
+
+    window.addEventListener("resize", function () {
+      if (!tiles.hidden) renderTiles();
+    });
   })();
 </script>
 
