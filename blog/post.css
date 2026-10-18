@@ -201,10 +201,11 @@ article p.landing { margin-top: 2.6em; }
   text-decoration-skip-ink: none;
 }
 
-/* stepped line: each step further in, and quieter */
-.step1, .step2, .step3 { display: block; }
-.step2 { margin-left: 1.7em; font-size: 0.95em; }
-.step3 { margin-left: 3.4em; font-size: 0.9em; }
+/* stepped line: each step further in, quieter, and standing clear of the
+   one above so it reads as a step and not as a line that wrapped */
+.step1, .step2, .step3 { display: block; margin-bottom: 0.5em; }
+.step2 { margin-left: 2.4em; font-size: 0.95em; }
+.step3 { margin-left: 4.8em; font-size: 0.88em; }
 
 /* the sentence that picks up again once the steps have stopped */
 .after { display: block; text-indent: 0; margin-top: 1.15em; }
