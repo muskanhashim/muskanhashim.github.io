@@ -152,9 +152,35 @@
 <circle cx="96" cy="262" opacity="0.6" r="2.9"></circle>
 <circle cx="62" cy="288" opacity="0.6" r="2.0"></circle>
   </symbol>
-  <symbol id="arrow" viewBox="0 0 280 150">
-<path d="M 6 16 C 96 0, 206 26, 216 112"></path>
-<path d="M 216 112 L 203 94"></path>
-<path d="M 216 112 L 230 96"></path>
+  <symbol id="arrow" viewBox="0 0 92 72">
+<path d="M 6 12 C 36 4, 68 16, 73 53"></path>
+<path d="M 73 53 L 60 44"></path>
+<path d="M 73 53 L 82 38"></path>
+  </symbol>
+  <symbol id="plumb" viewBox="0 0 110 320">
+<path d="M 26 14 L 84 14"></path>
+<path d="M 55 14 L 55 212"></path>
+<path d="M 41 230 Q 55 219 69 230 L 69 256 L 55 298 L 41 256 Z"></path>
+<path d="M 41 245 L 69 245"></path>
+<path d="M 10 311 L 100 311" opacity="0.55"></path>
+  </symbol>
+  <symbol id="stalks" viewBox="0 0 190 300">
+<path d="M 12 282 L 178 282" opacity="0.55"></path>
+<path d="M 34 282 Q 24 200 30 112"></path>
+<path d="M 30 112 L 21 99"></path>
+<path d="M 30 112 L 30 93"></path>
+<path d="M 30 112 L 39 100"></path>
+<path d="M 68 282 Q 62 180 74 64"></path>
+<path d="M 74 64 Q 65 48 74 33 Q 83 48 74 64"></path>
+<path d="M 104 282 Q 112 208 116 140"></path>
+<path d="M 116 140 L 107 130"></path>
+<path d="M 116 135 L 125 126"></path>
+<path d="M 116 130 L 108 120"></path>
+<path d="M 138 282 Q 148 196 134 92"></path>
+<path d="M 134 92 L 126 101"></path>
+<path d="M 135 103 L 144 111"></path>
+<path d="M 136 113 L 128 122"></path>
+<path d="M 168 282 Q 176 240 180 186"></path>
+<path d="M 180 186 Q 188 174 180 166 Q 172 174 180 186"></path>
   </symbol>
 </svg>
