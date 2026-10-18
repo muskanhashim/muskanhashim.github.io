@@ -293,20 +293,19 @@ s { text-decoration-thickness: 1px; color: var(--soft); }
 /* 117 */
 .mark {
   position: fixed;
-  right: 14px;
-  bottom: 18px;
+  right: 20px;
+  bottom: 22px;
   text-align: center;
-  line-height: 1.15;
+  line-height: 1.04;
+  user-select: none;
 }
 
 .mark i {
   display: block;
   font-style: normal;
-  font-size: 0.62rem;
-  letter-spacing: 0.34em;
-  color: #c9c9c9;
-  user-select: none;
+  font-size: 1.05rem;
+  color: #b7b7b7;
   transition: color 400ms ease;
 }
 
-.mark:hover { color: var(--piece); }
+.mark:hover i { color: var(--piece); }
