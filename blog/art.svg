@@ -152,4 +152,9 @@
 <circle cx="96" cy="262" opacity="0.6" r="2.9"></circle>
 <circle cx="62" cy="288" opacity="0.6" r="2.0"></circle>
   </symbol>
+  <symbol id="arrow" viewBox="0 0 120 76">
+<path d="M 8 12 C 46 2, 94 12, 94 58"></path>
+<path d="M 94 58 L 84 42"></path>
+<path d="M 94 58 L 104 42"></path>
+  </symbol>
 </svg>
