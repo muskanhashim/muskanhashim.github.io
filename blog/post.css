@@ -451,7 +451,11 @@ article .update p { font-size: 1rem; }
 /* a ledger of three entries gets a drawing against each one, so they are
    smaller than a piece's single drawing and alternate down the page.
    note: not ".mark" -- that class is the fixed 117 in the corner */
-.drawing.entry { width: 112px; color: #d0d0d0; }
+.drawing.entry { width: 112px; color: #c6c6c6; }
+
+/* the plane is all thin diagonals, so it reads lighter than the window
+   and the letter at the same colour: give it back the difference */
+.drawing.entry.denser { width: 124px; color: #b6b6b6; }
 
 @media (min-width: 1180px) {
   .drawing.entry.right { margin-right: -58px; }
