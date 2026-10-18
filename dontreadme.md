@@ -1,4 +1,4 @@
-# dont read me
+# dontreadme
 
 My site. Some essays, some fragments, and a room of photographs.
 
