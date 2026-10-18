@@ -99,6 +99,15 @@ h1 + .lede,
 h1 + p,
 h1 + .drawing + p { margin-top: 44px; }
 
+/* a second title the piece could have had, kept in the margin of the
+   first one. on this site it also answers piece 01. */
+.alt {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 7px 0 -2px;
+}
+
 .date {
   display: block;
   font-size: 0.8rem;
