@@ -109,6 +109,7 @@ h1 + .drawing + p { margin-top: 44px; }
 p {
   font-size: 1.0625rem;
   line-height: 1.85;
+  text-wrap: pretty;
   margin-bottom: 1.35em;
 }
 
@@ -118,6 +119,7 @@ p {
 /* and its first word stands alone above it, at full voice */
 .versal {
   display: block;
+  text-indent: 0;
   font-size: 1.95em;
   line-height: 1.05;
   letter-spacing: -0.015em;
@@ -350,9 +352,9 @@ article .update p { font-size: 1rem; }
 
 /* a dedication is not the first paragraph of the essay, it is a threshold */
 .dedication p:first-of-type {
-  font-size: 1.3rem;
-  line-height: 1.5;
-  color: #d6407f;
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--accent);
   font-style: italic;
   padding-bottom: 1.8em;
   margin-bottom: 2.2em;
@@ -370,7 +372,7 @@ article .update p { font-size: 1rem; }
    colour. */
 .dedication p:first-of-type { text-align: center; }
 .dedication .ln { display: block; margin-bottom: 1.05em; }
-.dedication .ln.open { font-style: normal; font-size: 1rem; color: var(--ink); margin-bottom: 1.5em; }
+.dedication .ln.open { font-style: normal; font-size: 0.95rem; color: var(--ink); margin-bottom: 1.5em; }
 /* the address sits below the rule, upright, in ink: the dedication is
    to the dead, this line is to someone still in it */
 .dedication .address {
@@ -440,7 +442,7 @@ article .update p { font-size: 1rem; }
 /* a ledger of three entries gets a drawing against each one, so they are
    smaller than a piece's single drawing and alternate down the page.
    note: not ".mark" -- that class is the fixed 117 in the corner */
-.drawing.entry { width: 112px; color: #c4c4c4; }
+.drawing.entry { width: 112px; color: #d0d0d0; }
 
 @media (min-width: 1180px) {
   .drawing.entry.right { margin-right: -58px; }
@@ -496,3 +498,15 @@ article .update p { font-size: 1rem; }
 /* a drawing floated directly after the title needs to clear it too */
 h1 + .drawing.right,
 h1 + .drawing.left { margin-top: 38px; }
+
+/* in print the furniture is noise: the header line, the thread, the mark
+   and the back link all go, and the piece sets itself on the page */
+@media print {
+  body { padding: 0; font-size: 11pt; }
+  .head, .thread, .mark, .back, .folio { display: none !important; }
+  article { max-width: none; margin: 0; }
+  .drawing { break-inside: avoid; }
+  article p.beat { font-size: 1.35em; }
+  article p.hush { color: #444; }
+  a { text-decoration: none; color: inherit; }
+}
