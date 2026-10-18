@@ -8,7 +8,7 @@
 <meta content="Muskan Hashim" name="author"/>
 <link href="post.css" rel="stylesheet"/>
 </head>
-<body class="fragments">
+<body class="fragments"><div class="thread"></div>
 <div class="head">
 <a href="/blog/">blog</a>
 <a href="/photos/">photo gallery →</a>
@@ -33,5 +33,5 @@
 </div>
 </article>
 <a class="back" href="/blog/">← all posts</a>
-</body>
+<script>(function(){var t=document.querySelector(".thread");if(!t||matchMedia("(prefers-reduced-motion: reduce)").matches)return;function f(){var h=document.body.scrollHeight-innerHeight;t.style.height=(h>0?Math.min(1,scrollY/h):0)*innerHeight+"px";}addEventListener("scroll",f,{passive:true});addEventListener("resize",f);f();})();</script></body>
 </html>
