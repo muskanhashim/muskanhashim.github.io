@@ -185,7 +185,25 @@
 
     /* the list of what you have already opened, set the way this index
        used to look: title left, date right, a hairline between */
-    .read-view { max-width: 640px; }
+    .read-view { max-width: none; }
+
+    .columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 56px;
+      align-items: flex-start;
+    }
+
+    .column { flex: 1 1 380px; max-width: 560px; }
+
+    .column h2 {
+      font-size: 0.85rem;
+      font-weight: normal;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .column.unread a { color: var(--ink); }
 
     .read-count {
       font-size: 0.85rem;
@@ -495,24 +513,43 @@
         return null;
       }).filter(Boolean);
 
-      var count = el("p", "read-count", seen.length
-        ? "you have opened " + seen.length + " of " + POSTS.length + ", in this order"
-        : "you have not opened any of them yet. the ones you have read show in pink.");
-      host.appendChild(count);
+      var unseen = POSTS.filter(function (p) { return READ.indexOf(p.u) === -1; })
+                        .slice().reverse();   // newest of what is left, first
 
-      if (seen.length) {
+      host.appendChild(el("p", "read-count", seen.length
+        ? "you have opened " + seen.length + " of " + POSTS.length
+        : "you have not opened any of them yet. the ones you have read show in pink."));
+
+      function column(title, posts, cls, empty) {
+        var box = el("div", "column " + cls);
+        box.appendChild(el("h2", null, title));
+        if (!posts.length) {
+          box.appendChild(el("p", "read-count", empty));
+          return box;
+        }
         var ul = document.createElement("ul");
-        seen.forEach(function (p) {
+        posts.forEach(function (p) {
           var li = document.createElement("li");
           var a = document.createElement("a");
           a.href = p.u;
           a.textContent = ("0" + p.n).slice(-2) + "  " + p.t;
+          a.addEventListener("click", function () { markRead(p.u); });
           li.appendChild(a);
           li.appendChild(el("span", "d", p.d || ""));
           ul.appendChild(li);
         });
-        host.appendChild(ul);
+        box.appendChild(ul);
+        return box;
+      }
 
+      var cols = el("div", "columns");
+      cols.appendChild(column("read, in the order you read them", seen, "seen",
+                              "nothing yet"));
+      cols.appendChild(column("not yet", unseen, "unread",
+                              "nothing left. you have read all of them."));
+      host.appendChild(cols);
+
+      if (seen.length) {
         var forget = el("button", "forget", "forget what i have read");
         forget.type = "button";
         forget.addEventListener("click", function () {
