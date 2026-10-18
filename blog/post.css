@@ -353,13 +353,14 @@ article .update p { font-size: 1rem; }
    reader has to go through them one at a time. the framing line above is
    quieter than they are; the line that turns to the reader keeps the
    colour. */
-.dedication .ln { display: block; margin-bottom: 0.9em; }
-.dedication .ln.open { font-size: 1rem; color: var(--soft); }
+.dedication p:first-of-type { text-align: center; }
+.dedication .ln { display: block; margin-bottom: 1.9em; }
+.dedication .ln.open { font-size: 1rem; color: var(--soft); margin-bottom: 2.2em; }
 .dedication .ln.to {
   font-style: italic;
   font-size: 1.1rem;
   color: var(--piece);
-  margin: 1.5em 0 0;
+  margin: 2.4em 0 0;
 }
 
 /* a few words lit so that, read on their own, they say something else */
