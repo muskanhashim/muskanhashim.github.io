@@ -95,7 +95,8 @@ h1 {
 }
 
 /* when a piece carries no date, the opening still needs the same air */
-h1 + .lede { margin-top: 44px; }
+h1 + .lede,
+h1 + p { margin-top: 44px; }
 
 .date {
   display: block;
@@ -158,6 +159,7 @@ article p.landing { margin-top: 2.6em; }
 
 /* where a piece repeats itself, the repetition becomes the shape:
    each refrain starts its own line */
+.stack article > p { font-size: 1.2rem; }
 .stack .ln { display: block; margin-bottom: 0.55em; }
 .stack .ln:last-child { margin-bottom: 0; }
 
@@ -202,7 +204,7 @@ s { text-decoration-thickness: 1px; color: var(--soft); }
   color: var(--soft);
 }
 
-.update p { font-size: 1rem; }
+article .update p { font-size: 1rem; }
 
 .update-date {
   display: block;
