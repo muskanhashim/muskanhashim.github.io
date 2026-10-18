@@ -369,7 +369,7 @@ article .update p { font-size: 1rem; }
    colour. */
 .dedication p:first-of-type { text-align: center; }
 .dedication .ln { display: block; margin-bottom: 1.9em; }
-.dedication .ln.open { font-size: 1rem; color: #d6407f; margin-bottom: 2.2em; }
+.dedication .ln.open { font-size: 1rem; color: var(--ink); margin-bottom: 2.2em; }
 .dedication .ln.to {
   font-style: italic;
   font-size: 1.1rem;
