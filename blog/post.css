@@ -62,7 +62,27 @@ a:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
 
 /* ---------- the piece ---------- */
 
-article { max-width: var(--measure); margin: 0 auto; }
+article { max-width: var(--measure); margin: 0 auto; position: relative; }
+
+/* the piece's number, big and pale -- the same number the index gives it */
+.folio {
+  display: block;
+  font-size: 4.4rem;
+  line-height: 0.86;
+  letter-spacing: -0.03em;
+  color: #e4e4e4;
+  margin-bottom: 10px;
+  user-select: none;
+}
+
+@media (min-width: 1180px) {
+  .folio {
+    position: absolute;
+    left: -1.7em;
+    top: -0.06em;
+    margin: 0;
+  }
+}
 
 h1 {
   color: var(--piece);
@@ -275,7 +295,13 @@ s { text-decoration-thickness: 1px; color: var(--soft); }
   position: fixed;
   right: 14px;
   bottom: 18px;
-  writing-mode: vertical-rl;
+  text-align: center;
+  line-height: 1.15;
+}
+
+.mark i {
+  display: block;
+  font-style: normal;
   font-size: 0.62rem;
   letter-spacing: 0.34em;
   color: #c9c9c9;
