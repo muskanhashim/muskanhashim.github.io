@@ -47,6 +47,19 @@ body {
 
 a:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
 
+::selection { background: var(--piece); color: #ffffff; }
+
+/* a thread down the margin that fills as you read */
+.thread {
+  position: fixed;
+  left: 16px;
+  top: 0;
+  width: 1px;
+  height: 0;
+  background: var(--piece);
+  opacity: 0.55;
+}
+
 /* ---------- the piece ---------- */
 
 article { max-width: var(--measure); margin: 0 auto; }
@@ -60,6 +73,9 @@ h1 {
   margin-bottom: 12px;
   text-wrap: balance;
 }
+
+/* when a piece carries no date, the opening still needs the same air */
+h1 + .lede { margin-top: 44px; }
 
 .date {
   display: block;
@@ -76,6 +92,28 @@ p {
 
 /* the opening line carries the piece, so it is set a shade larger */
 .lede { font-size: 1.2rem; line-height: 1.68; }
+
+/* and its first word stands alone above it, at full voice */
+.versal {
+  display: block;
+  font-size: 1.95em;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.18em;
+  color: var(--ink);
+}
+
+/* a quiet full stop to the whole piece */
+article > p:last-of-type::after,
+.update p:last-of-type::after {
+  content: "";
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  margin-left: 0.5em;
+  background: var(--piece);
+  vertical-align: baseline;
+}
 
 article a {
   color: var(--ink);
@@ -133,6 +171,10 @@ s { text-decoration-thickness: 1px; color: var(--soft); }
   line-height: 1.26;
   margin: 0;
 }
+
+/* one word per line */
+.single .w { display: block; }
+.single article > p:last-of-type::after { display: none; }
 
 /* short lines that are each their own thought: give them air */
 .fragments p {

@@ -55,6 +55,8 @@
 
     a:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
 
+    ::selection { background: var(--accent); color: #ffffff; }
+
     .strip {
       display: flex;
       flex-wrap: wrap;
@@ -67,6 +69,16 @@
       width: auto;
       display: block;
       background: var(--rule);
+      transition: opacity 260ms ease;
+    }
+
+    @media (hover: hover) {
+      .strip:hover img { opacity: 0.38; }
+      .strip img:hover { opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .strip img { transition: none; }
     }
 
     .back {

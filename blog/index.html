@@ -54,6 +54,8 @@
 
     a:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
 
+    ::selection { background: var(--accent); color: #ffffff; }
+
     /* switching between the two views */
 
     .views {
@@ -98,10 +100,14 @@
       color: var(--ink);
       text-decoration: none;
       line-height: 1.2;
-      transition: color 140ms ease;
+      transition: color 140ms ease, opacity 220ms ease;
     }
 
     .wall a:hover { color: var(--accent); }
+
+    /* look at one and the rest step back */
+    .wall:hover a { opacity: 0.4; }
+    .wall a:hover { opacity: 1; }
 
     /* a piece you have already read stays pink -- :visited is the only part of
        browser history CSS may style, and only ever as a colour */
@@ -388,6 +394,8 @@
     function renderWall() {
       var host = document.getElementById("wall");
       host.textContent = "";
+      // every visit, one of them shouts
+      var loud = POSTS[Math.floor(Math.random() * POSTS.length)];
       shuffled(POSTS).forEach(function (p) {
         var a = postLink(p);
         a.appendChild(el("sup", "num", ("0" + p.n).slice(-2)));
@@ -396,6 +404,7 @@
         var n = p.t.length;
         var sizes = n <= 14 ? [24, 30, 37] : n <= 24 ? [21, 25, 31] : n <= 34 ? [18, 22, 26] : [17, 20, 23];
         a.style.fontSize = pick(sizes) + "px";
+        if (p === loud) a.style.fontSize = Math.round(parseFloat(a.style.fontSize) * 2.1) + "px";
         host.appendChild(a);
       });
     }
