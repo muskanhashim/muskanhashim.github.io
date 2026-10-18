@@ -288,6 +288,26 @@ article .update p { font-size: 1rem; }
   text-wrap: balance;
 }
 
+/* each note is its own finished thing, so each one ends the way a whole
+   piece ends on this site -- with the small square. grey, because the
+   page is not over; the last one keeps the ink square. */
+.scatter .note::after {
+  content: "";
+  display: inline-block;
+  width: 0.34em;
+  height: 0.34em;
+  margin-left: 0.55em;
+  background: #c3c3c3;
+  vertical-align: baseline;
+}
+
+/* the memory at the foot still closes the whole page, in ink */
+.scatter .keeper::after {
+  background: var(--piece);
+  width: 0.4em;
+  height: 0.4em;
+}
+
 .scatter .keeper {
   font-size: 1.0625rem;
   line-height: 1.85;
@@ -392,6 +412,10 @@ article .update p { font-size: 1rem; }
 
 /* a doodle is drawn by a hand, not a machine: heavier stroke, smaller */
 .drawing.doodle { width: 152px; color: #b4b4b4; }
+
+/* the parent drawn in a broken line needs a little more room, or the
+   dashes stop reading as a line and start reading as noise */
+.drawing.absent { width: 172px; color: #a9a9a9; }
 
 /* a ledger of three entries gets a drawing against each one, so they are
    smaller than a piece's single drawing and alternate down the page.
