@@ -241,9 +241,56 @@
     .forget:hover { color: var(--accent); }
     .forget:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
 
+    /* not a button with edges: a line in the same hand as the rest of the
+       site, with the drawn arrow the home page uses */
+    .pick {
+      display: flex;
+      width: max-content;
+      align-items: center;
+      gap: 12px;
+      margin-top: 72px;
+      padding: 0;
+      border: 0;
+      background: none;
+      cursor: pointer;
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+
+    .pick i {
+      position: relative;
+      display: inline-block;
+      width: 52px;
+      height: 1px;
+      background: var(--ink);
+      transition: width 260ms cubic-bezier(.2,.7,.3,1), background 180ms ease;
+    }
+
+    .pick i::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: -2.5px;
+      width: 6px;
+      height: 6px;
+      border-top: 1px solid currentColor;
+      border-right: 1px solid currentColor;
+      color: var(--ink);
+      transform: rotate(45deg);
+      transition: color 180ms ease;
+    }
+
+    .pick:hover { color: var(--accent); }
+    .pick:hover i { width: 104px; background: var(--accent); }
+    .pick:hover i::after { color: var(--accent); }
+    .pick:focus-visible { outline: 1px solid var(--accent); outline-offset: 6px; }
+
+    @media (prefers-reduced-motion: reduce) { .pick i { transition: none; } }
+
     .back {
       display: block;
-      margin-top: 72px;
+      margin-top: 28px;
       font-size: 0.85rem;
       color: var(--muted);
       text-decoration: none;
@@ -313,6 +360,8 @@
     <div class="tiles" id="tiles" hidden></div>
 
     <div class="read-view" id="read" hidden></div>
+
+    <button type="button" class="pick" id="pick">pick one for me<i></i></button>
 
     <a class="back" href="/">&larr; back</a>
 
@@ -578,6 +627,16 @@
 
     Array.prototype.forEach.call(buttons, function (b) {
       b.addEventListener("click", function () { show(b.getAttribute("data-view")); });
+    });
+
+    // hands over something unread, and only repeats itself once there is
+    // nothing left that it has not already given you
+    document.getElementById("pick").addEventListener("click", function () {
+      var pool = POSTS.filter(function (p) { return READ.indexOf(p.u) === -1; });
+      if (!pool.length) pool = POSTS;
+      var p = pool[Math.floor(Math.random() * pool.length)];
+      markRead(p.u);
+      location.href = p.u;
     });
 
     var saved;
