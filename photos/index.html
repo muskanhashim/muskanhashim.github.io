@@ -96,15 +96,9 @@
       .row img { transition: none; }
     }
 
-    /* the way out and the 117, on one line under the wall */
-    .foot {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-top: 64px;
-    }
-
     .back {
+      display: block;
+      margin-top: 64px;
       font-size: 0.85rem;
       color: var(--muted);
       text-decoration: none;
@@ -127,22 +121,21 @@
       .row { flex-direction: column; }
     }
 
-    /* 117 stands in the page here rather than fixed in a corner -- with the
-       pictures running to the edges, a fixed corner is always on top of one
-       of them. */
+    /* 117 sits in the header line between the two words, written as one
+       number and dropped so the rule under the header runs straight through
+       it. Each digit is still its own door. */
     .mark {
-      text-align: center;
-      line-height: 1.04;
+      position: relative;
+      top: 24px;
       user-select: none;
     }
 
     .mark a { text-decoration: none; }
 
     .mark i {
-      display: block;
+      display: inline;
       font-style: normal;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.55rem;
+      font-size: 1.5rem;
       color: #9a9a9a;
       transition: color 400ms ease;
     }
@@ -155,8 +148,9 @@
   <div class="page">
 
     <div class="head">
+      <a class="elsewhere" href="/blog/">&larr; blog</a>
+      <span class="mark"><a href="/blog/nobodys-daughter.html" aria-label="nobody’s daughter"><i>1</i></a><a href="/blog/to-a-dead-version-of-myself.html" aria-label="to a dead version of myself"><i>1</i></a><a href="/blog/the-only-thing.html" aria-label="the only thing i have is myself"><i>7</i></a></span>
       <h1>photos</h1>
-      <a class="elsewhere" href="/blog/">blog &rarr;</a>
     </div>
 
     <div class="rows">
@@ -170,8 +164,7 @@
         <img src="img/p17.webp" width="703" height="560" alt="A pink sticky note on a box of biscuits: some almost healthy stuff from Portugal, enjoy." loading="lazy" style="flex-grow: 1.255" decoding="async">
         <img src="img/p03.webp" width="1050" height="1050" alt="A crate of striped decorative gourds outside a supermarket." loading="lazy" style="flex-grow: 1.000" decoding="async">
       </div>
-      <div class="row" style="--sum: 4.302; --gaps: 4">
-        <img src="img/p22.webp" width="609" height="609" alt="A smartwatch showing a notification, an office kitchen behind." loading="lazy" style="flex-grow: 1.000" decoding="async">
+      <div class="row" style="--sum: 3.302; --gaps: 3">
         <img src="img/p18.webp" width="675" height="900" alt="A supermarket freezer pack of creamed spinach, the photographer reflected in the glass." loading="lazy" style="flex-grow: 0.750" decoding="async">
         <img src="img/p32.webp" width="675" height="900" alt="A bottle of gingerbread-flavoured cola in a supermarket crate." loading="lazy" style="flex-grow: 0.750" decoding="async">
         <img src="img/p16.webp" width="483" height="602" alt="A smartwatch on a desk: let’s call it a week u guys, we did our best." loading="lazy" style="flex-grow: 0.802" decoding="async">
@@ -212,10 +205,7 @@
       </div>
     </div>
 
-    <div class="foot">
-      <a class="back" href="/">&larr; back</a>
-      <span class="mark"><a href="/blog/nobodys-daughter.html" aria-label="nobody’s daughter"><i>1</i></a><a href="/blog/to-a-dead-version-of-myself.html" aria-label="to a dead version of myself"><i>1</i></a><a href="/blog/the-only-thing.html" aria-label="the only thing i have is myself"><i>7</i></a></span>
-    </div>
+    <a class="back" href="/">&larr; back</a>
 
   </div>
 </body>
