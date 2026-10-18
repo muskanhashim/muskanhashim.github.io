@@ -81,25 +81,6 @@
     .views button:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
     .views .sep { color: var(--rule); }
 
-    /* sits apart from the switch: it does something, it does not choose a
-       view. a soft pink wash reads as a button without a hard edge. */
-    .views .pick {
-      margin-left: auto;
-      font-size: 0.95rem;
-      color: var(--accent);
-      background: rgba(224, 33, 138, 0.09);
-      padding: 8px 15px;
-      border-radius: 2px;
-      transition: background 180ms ease, color 180ms ease;
-    }
-
-    .views .pick:hover {
-      background: rgba(224, 33, 138, 0.18);
-      color: var(--accent);
-    }
-
-    .views .pick:active { background: rgba(224, 33, 138, 0.26); }
-
     /* the wall */
 
     .wall {
@@ -323,7 +304,6 @@
       <button type="button" data-view="tiles" aria-pressed="false">tiles</button>
       <span class="sep">/</span>
       <button type="button" data-view="read" aria-pressed="false">what you've read</button>
-      <button type="button" class="pick" id="pick">pick one for me</button>
     </div>
 
     <div class="wall" id="wall"></div>
@@ -598,15 +578,6 @@
 
     Array.prototype.forEach.call(buttons, function (b) {
       b.addEventListener("click", function () { show(b.getAttribute("data-view")); });
-    });
-
-    // hands you something you have not read, unless you have read everything
-    document.getElementById("pick").addEventListener("click", function () {
-      var pool = POSTS.filter(function (p) { return READ.indexOf(p.u) === -1; });
-      if (!pool.length) pool = POSTS;
-      var p = pool[Math.floor(Math.random() * pool.length)];
-      markRead(p.u);
-      location.href = p.u;
     });
 
     var saved;
