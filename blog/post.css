@@ -316,10 +316,9 @@ article .update p { font-size: 1rem; }
 
 /* a dedication is not the first paragraph of the essay, it is a threshold */
 .dedication p:first-of-type {
-  font-style: italic;
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: var(--piece);
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: var(--ink);
   padding-bottom: 1.8em;
   margin-bottom: 2.2em;
   border-bottom: 1px solid var(--rule);
@@ -327,6 +326,21 @@ article .update p { font-size: 1rem; }
 
 /* one word carrying the whole sentence */
 .lit { color: var(--accent); }
+
+/* the three deaths are the piece. they were set small, italic and pink,
+   which is the shape of a caption -- and captions get skimmed. each one
+   now holds its own line at full ink, the largest text on the page, so a
+   reader has to go through them one at a time. the framing line above is
+   quieter than they are; the line that turns to the reader keeps the
+   colour. */
+.dedication .ln { display: block; margin-bottom: 0.9em; }
+.dedication .ln.open { font-size: 1rem; color: var(--soft); }
+.dedication .ln.to {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--piece);
+  margin: 1.5em 0 0;
+}
 
 /* a few words lit so that, read on their own, they say something else */
 .egg { color: var(--whisper); }
@@ -423,6 +437,8 @@ article .update p { font-size: 1rem; }
   user-select: none;
 }
 
+.mark a { text-decoration: none; }
+
 .mark i {
   display: block;
   font-style: normal;
@@ -431,7 +447,7 @@ article .update p { font-size: 1rem; }
   transition: color 400ms ease;
 }
 
-.mark:hover i { color: var(--piece); }
+.mark a:hover i { color: var(--piece); }
 
 /* a drawing floated directly after the title needs to clear it too */
 h1 + .drawing.right,
