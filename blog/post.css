@@ -270,6 +270,20 @@ article a {
 
 article a:hover { color: var(--accent); }
 
+/* a title that is also a link stays a title: it keeps the piece's colour and
+   draws its rule only when you reach for it */
+article h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+article h1 a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 7px;
+  text-decoration-thickness: 1px;
+}
+
 b, strong { font-weight: bold; }
 s { text-decoration-thickness: 1px; color: var(--soft); }
 
