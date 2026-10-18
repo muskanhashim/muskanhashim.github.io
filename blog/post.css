@@ -172,6 +172,25 @@ article p.landing { margin-top: 2.6em; }
 .book article > p.beat { margin-bottom: 2.4em; }
 .book .update p { text-indent: 0; margin-bottom: 1.2em; }
 
+/* one piece opens by correcting itself, and the correction is the whole
+   argument -- so the refused word takes the line and the size the versal
+   would have had. the rule through it is drawn in the accent, unbroken
+   through the descenders, and the word stays full ink: you have to read
+   it to feel it being taken back. */
+.said { display: block; }
+
+.refused {
+  display: block;
+  font-size: 2.1rem;
+  line-height: 1.12;
+  margin: 0.06em 0 0.12em;
+  color: var(--ink);
+  text-decoration-line: line-through;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1.5px;
+  text-decoration-skip-ink: none;
+}
+
 /* a quiet full stop to the whole piece */
 article > p:last-of-type::after,
 .update p:last-of-type::after {
