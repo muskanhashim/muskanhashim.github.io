@@ -208,6 +208,22 @@
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; }
     }
+
+    /* 117 */
+    .mark {
+      position: fixed;
+      right: 14px;
+      bottom: 18px;
+      writing-mode: vertical-rl;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.34em;
+      color: #c9c9c9;
+      user-select: none;
+      transition: color 400ms ease;
+    }
+
+    .mark:hover { color: #e0218a; }
   </style>
 </head>
 <body>
@@ -446,5 +462,6 @@
   })();
 </script>
 
+  <span class="mark" aria-hidden="true">117</span>
 </body>
 </html>

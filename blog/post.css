@@ -238,3 +238,18 @@ s { text-decoration-thickness: 1px; color: var(--soft); }
   p { font-size: 1.02rem; }
   .lede, .fragments p { font-size: 1.12rem; }
 }
+
+/* 117 */
+.mark {
+  position: fixed;
+  right: 14px;
+  bottom: 18px;
+  writing-mode: vertical-rl;
+  font-size: 0.62rem;
+  letter-spacing: 0.34em;
+  color: #c9c9c9;
+  user-select: none;
+  transition: color 400ms ease;
+}
+
+.mark:hover { color: var(--piece); }
