@@ -298,15 +298,20 @@ article a.secret:hover {
 b, strong { font-weight: bold; }
 s { text-decoration-thickness: 1px; color: var(--soft); }
 
-/* a photograph of the room a piece was written in. It holds the measure of
-   the writing rather than the width of the window -- these are small pieces
-   and a banner would swallow them. No caption: the piece is the caption. */
-.room { margin: 54px 0; }
+/* a photograph of the room a piece was written in, set into the column the
+   way a drawing is: small, to the side, supporting the writing rather than
+   standing in front of it. No caption -- the piece is the caption. */
+.room {
+  float: right;
+  width: 254px;
+  margin: 8px -34px 22px 30px;
+  shape-margin: 18px;
+}
 
 .room img { display: block; width: 100%; height: auto; }
 
-@media (max-width: 620px) {
-  .room { margin: 38px 0; }
+@media (max-width: 760px) {
+  .room { float: none; width: 100%; margin: 34px 0; }
 }
 
 /* an addition written later, set apart rather than merged in */
@@ -534,9 +539,30 @@ article .drawing a:hover { color: var(--accent); }
 .drawing.tall { width: 104px; }
 
 /* the little arrow that sends you to the radio */
-.drawing.cue { width: 146px; color: #bdbdbd; margin-bottom: -10px; }
-/* whatever the arrow points at goes underneath it, not beside it */
-.drawing.cue + .drawing { clear: right; }
+/* the arrow that runs from the title across to the radio. It is pinned
+   rather than floated, because a float can only sit at the edge of the
+   column and this has to cross the gap between the two. */
+.cue {
+  position: absolute;
+  top: 3.4rem;
+  right: -26px;
+  width: 268px;
+  color: #bdbdbd;
+  pointer-events: none;
+}
+
+.cue svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 860px) { .cue { display: none; } }
 
 .drawing.right { float: right; margin: 6px -34px 14px 26px; }
 .drawing.left  { float: left;  margin: 6px 26px 14px -34px; }
