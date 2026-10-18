@@ -298,21 +298,15 @@ article a.secret:hover {
 b, strong { font-weight: bold; }
 s { text-decoration-thickness: 1px; color: var(--soft); }
 
-/* a photograph of the room a piece was written in. It runs the full width
-   of the window, wider than the words, and carries no caption -- the piece
-   is the caption. */
-.room {
-  width: 100vw;
-  margin: 76px 0 76px calc(50% - 50vw);
-}
+/* a photograph of the room a piece was written in. It holds the measure of
+   the writing rather than the width of the window -- these are small pieces
+   and a banner would swallow them. No caption: the piece is the caption. */
+.room { margin: 54px 0; }
 
 .room img { display: block; width: 100%; height: auto; }
 
-/* 100vw is wider than the page when a scrollbar is showing */
-body { overflow-x: clip; }
-
 @media (max-width: 620px) {
-  .room { margin-top: 52px; margin-bottom: 52px; }
+  .room { margin: 38px 0; }
 }
 
 /* an addition written later, set apart rather than merged in */
@@ -540,7 +534,7 @@ article .drawing a:hover { color: var(--accent); }
 .drawing.tall { width: 104px; }
 
 /* the little arrow that sends you to the radio */
-.drawing.cue { width: 104px; color: #c2c2c2; margin-bottom: -6px; }
+.drawing.cue { width: 146px; color: #bdbdbd; margin-bottom: -10px; }
 /* whatever the arrow points at goes underneath it, not beside it */
 .drawing.cue + .drawing { clear: right; }
 
