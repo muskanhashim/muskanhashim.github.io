@@ -306,22 +306,39 @@ s { text-decoration-thickness: 1px; color: var(--soft); }
   .lede, .fragments p { font-size: 1.12rem; }
 }
 
-/* a drawing closes the pieces that have one: a tailpiece, the way a poetry
-   book sets one at the foot of a poem. light enough not to argue with the
-   writing above it. */
+/* a drawing sits in the column with the writing flowing round it, and the
+   wrap follows the drawing's own outline rather than a box: the polygon on
+   each one is traced from its path data. */
 .drawing {
-  display: block;
-  width: 190px;
-  margin: 64px auto 0;
-  color: #cccccc;
+  width: 164px;
+  shape-margin: 16px;
+  color: #c6c6c6;
 }
 
 .drawing svg { width: 100%; height: auto; display: block; }
 
+/* a tall thin drawing needs less width to read */
+.drawing.tall { width: 104px; }
+
+.drawing.right { float: right; margin: 6px -34px 14px 26px; }
+.drawing.left  { float: left;  margin: 6px 26px 14px -34px; }
+
 .dedication .drawing { color: #efc3d8; }
 
+/* a float cannot reach into a margin that is not there */
+@media (max-width: 1180px) {
+  .drawing.right { margin-right: 0; }
+  .drawing.left  { margin-left: 0; }
+}
+
+/* on a phone the column is too narrow to wrap round anything */
 @media (max-width: 620px) {
-  .drawing { width: 150px; margin-top: 48px; }
+  .drawing {
+    float: none;
+    width: 140px;
+    margin: 28px auto;
+    shape-outside: none !important;
+  }
 }
 
 /* 117 */
