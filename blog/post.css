@@ -96,7 +96,8 @@ h1 {
 
 /* when a piece carries no date, the opening still needs the same air */
 h1 + .lede,
-h1 + p { margin-top: 44px; }
+h1 + p,
+h1 + .drawing + p { margin-top: 44px; }
 
 .date {
   display: block;
@@ -234,7 +235,7 @@ article .update p { font-size: 1rem; }
 
 .back {
   display: block;
-  max-width: var(--measure);
+  max-width: calc(var(--measure) / 0.85);
   margin: 72px auto 0;
   font-size: 0.85rem;
   color: var(--muted);
@@ -334,7 +335,7 @@ article .update p { font-size: 1rem; }
 .dash {
   color: var(--piece);
   letter-spacing: 0.35em;
-  margin-bottom: 1.35em;
+  margin: 2.6em 0;
 }
 
 /* this one argues with a machine, so it is set like one */
@@ -377,6 +378,16 @@ article .update p { font-size: 1rem; }
 
 /* a doodle is drawn by a hand, not a machine: heavier stroke, smaller */
 .drawing.doodle { width: 152px; color: #b4b4b4; }
+
+/* a ledger of three entries gets a drawing against each one, so they are
+   smaller than a piece's single drawing and alternate down the page.
+   note: not ".mark" -- that class is the fixed 117 in the corner */
+.drawing.entry { width: 112px; color: #c4c4c4; }
+
+@media (min-width: 1180px) {
+  .drawing.entry.right { margin-right: -58px; }
+  .drawing.entry.left { margin-left: -58px; }
+}
 
 /* a tall thin drawing needs less width to read */
 .drawing.tall { width: 104px; }
@@ -421,3 +432,7 @@ article .update p { font-size: 1rem; }
 }
 
 .mark:hover i { color: var(--piece); }
+
+/* a drawing floated directly after the title needs to clear it too */
+h1 + .drawing.right,
+h1 + .drawing.left { margin-top: 38px; }
