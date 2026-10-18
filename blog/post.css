@@ -209,6 +209,24 @@ article p.landing { margin-top: 2.6em; }
 /* a word let down onto the next line, close enough to keep the sentence */
 .drop { display: block; margin: 0.12em 0 0 1.8em; }
 
+/* a piece that ends on its own title: the last sentence takes its own
+   line, so the echo is visible rather than buried in a paragraph */
+.landing .ln { display: block; }
+.landing .ln.echo { margin-top: 1.1em; }
+
+/* the end mark belongs to the closing line, not to a line of its own */
+article > p.landing:has(.echo)::after { display: none; }
+
+.landing .ln.echo::after {
+  content: "";
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  margin-left: 0.5em;
+  background: var(--piece);
+  vertical-align: baseline;
+}
+
 /* a quiet full stop to the whole piece */
 article > p:last-of-type::after,
 .update p:last-of-type::after {
