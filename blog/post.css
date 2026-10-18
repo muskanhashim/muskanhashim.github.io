@@ -293,8 +293,8 @@ s { text-decoration-thickness: 1px; color: var(--soft); }
 /* 117 */
 .mark {
   position: fixed;
-  right: 20px;
-  bottom: 22px;
+  right: 26px;
+  bottom: 26px;
   text-align: center;
   line-height: 1.04;
   user-select: none;
@@ -303,8 +303,8 @@ s { text-decoration-thickness: 1px; color: var(--soft); }
 .mark i {
   display: block;
   font-style: normal;
-  font-size: 1.05rem;
-  color: #b7b7b7;
+  font-size: 1.55rem;
+  color: #9a9a9a;
   transition: color 400ms ease;
 }
 

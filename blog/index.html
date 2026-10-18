@@ -60,7 +60,7 @@
 
     .views {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       gap: 10px;
       margin-bottom: 44px;
       font-size: 0.85rem;
@@ -81,13 +81,24 @@
     .views button:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
     .views .sep { color: var(--rule); }
 
-    /* sits apart from the switch: it does something, it does not choose a view */
+    /* sits apart from the switch: it does something, it does not choose a
+       view. a soft pink wash reads as a button without a hard edge. */
     .views .pick {
       margin-left: auto;
-      color: var(--ink);
+      font-size: 0.95rem;
+      color: var(--accent);
+      background: rgba(224, 33, 138, 0.09);
+      padding: 8px 15px;
+      border-radius: 2px;
+      transition: background 180ms ease, color 180ms ease;
     }
 
-    .views .pick:hover { color: var(--accent); }
+    .views .pick:hover {
+      background: rgba(224, 33, 138, 0.18);
+      color: var(--accent);
+    }
+
+    .views .pick:active { background: rgba(224, 33, 138, 0.26); }
 
     /* the wall */
 
@@ -278,8 +289,8 @@
     /* 117 */
     .mark {
       position: fixed;
-      right: 20px;
-      bottom: 22px;
+      right: 26px;
+      bottom: 26px;
       text-align: center;
       line-height: 1.04;
       user-select: none;
@@ -289,8 +300,8 @@
       display: block;
       font-style: normal;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.05rem;
-      color: #b7b7b7;
+      font-size: 1.55rem;
+      color: #9a9a9a;
       transition: color 400ms ease;
     }
 
