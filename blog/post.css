@@ -353,6 +353,7 @@ article .update p { font-size: 1rem; }
   font-size: 1.3rem;
   line-height: 1.5;
   color: #d6407f;
+  font-style: italic;
   padding-bottom: 1.8em;
   margin-bottom: 2.2em;
   border-bottom: 1px solid var(--rule);
@@ -368,13 +369,17 @@ article .update p { font-size: 1rem; }
    quieter than they are; the line that turns to the reader keeps the
    colour. */
 .dedication p:first-of-type { text-align: center; }
-.dedication .ln { display: block; margin-bottom: 1.9em; }
-.dedication .ln.open { font-size: 1rem; color: var(--ink); margin-bottom: 2.2em; }
-.dedication .ln.to {
-  font-style: italic;
+.dedication .ln { display: block; margin-bottom: 1.05em; }
+.dedication .ln.open { font-style: normal; font-size: 1rem; color: var(--ink); margin-bottom: 1.5em; }
+/* the address sits below the rule, upright, in ink: the dedication is
+   to the dead, this line is to someone still in it */
+.dedication .address {
+  text-align: center;
+  text-indent: 0;
   font-size: 1.1rem;
+  line-height: 1.6;
   color: var(--ink);
-  margin: 2.4em 0 0;
+  margin: 0 0 2.6em;
 }
 
 /* a few words lit so that, read on their own, they say something else */
