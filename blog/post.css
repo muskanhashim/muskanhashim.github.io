@@ -103,6 +103,37 @@ p {
   color: var(--ink);
 }
 
+/* a short paragraph in the middle of a piece is a punchline, not prose:
+   set it larger, with air either side, and let it hang into the margin */
+article p.beat {
+  font-size: 1.55rem;
+  line-height: 1.38;
+  margin: 2.4em 0;
+}
+
+article p.beat.ask { font-style: italic; }
+
+@media (min-width: 900px) {
+  article p.beat { margin-left: -0.55em; }
+}
+
+/* the last paragraph gets a breath before it lands */
+article p.landing { margin-top: 2.6em; }
+
+/* where a piece repeats itself, the repetition becomes the shape:
+   each refrain starts its own line */
+.stack .ln { display: block; margin-bottom: 0.55em; }
+.stack .ln:last-child { margin-bottom: 0; }
+
+/* the long essays are set like print: indents instead of gaps */
+.book article > p { margin-bottom: 0; text-indent: 1.7em; }
+.book article > p.lede,
+.book article > p.beat,
+.book .dedication p:first-of-type,
+.book article > p:first-of-type { text-indent: 0; }
+.book article > p.beat { margin-bottom: 2.4em; }
+.book .update p { text-indent: 0; margin-bottom: 1.2em; }
+
 /* a quiet full stop to the whole piece */
 article > p:last-of-type::after,
 .update p:last-of-type::after {
