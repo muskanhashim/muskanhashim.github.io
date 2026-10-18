@@ -317,6 +317,17 @@ s { text-decoration-thickness: 1px; color: var(--soft); }
 
 .drawing svg { width: 100%; height: auto; display: block; }
 
+/* one drawing is meant to take the whole side of its page */
+.drawing.huge {
+  width: clamp(230px, 32vw, 340px);
+  color: #d4d4d4;
+  shape-margin: 22px;
+}
+
+@media (min-width: 1180px) {
+  .drawing.huge.left { margin-left: -150px; }
+}
+
 /* a tall thin drawing needs less width to read */
 .drawing.tall { width: 104px; }
 
