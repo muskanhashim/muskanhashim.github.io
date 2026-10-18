@@ -280,6 +280,9 @@ s { text-decoration-thickness: 1px; color: var(--soft); }
   border-bottom: 1px solid var(--rule);
 }
 
+/* one word carrying the whole sentence */
+.lit { color: var(--accent); }
+
 /* a few words lit so that, read on their own, they say something else */
 .egg { color: var(--whisper); }
 
@@ -327,6 +330,9 @@ s { text-decoration-thickness: 1px; color: var(--soft); }
 @media (min-width: 1180px) {
   .drawing.huge.left { margin-left: -230px; }
 }
+
+/* a doodle is drawn by a hand, not a machine: heavier stroke, smaller */
+.drawing.doodle { width: 152px; color: #b4b4b4; }
 
 /* a tall thin drawing needs less width to read */
 .drawing.tall { width: 104px; }
