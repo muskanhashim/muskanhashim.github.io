@@ -81,6 +81,14 @@
     .views button:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
     .views .sep { color: var(--rule); }
 
+    /* sits apart from the switch: it does something, it does not choose a view */
+    .views .pick {
+      margin-left: auto;
+      color: var(--ink);
+    }
+
+    .views .pick:hover { color: var(--accent); }
+
     /* the wall */
 
     .wall {
@@ -305,6 +313,7 @@
       <button type="button" data-view="tiles" aria-pressed="false">tiles</button>
       <span class="sep">/</span>
       <button type="button" data-view="read" aria-pressed="false">what you've read</button>
+      <button type="button" class="pick" id="pick">pick one for me</button>
     </div>
 
     <div class="wall" id="wall"></div>
@@ -501,7 +510,7 @@
     var tiles = document.getElementById("tiles");
     var read = document.getElementById("read");
     var note = document.getElementById("note");
-    var buttons = document.querySelectorAll(".views button");
+    var buttons = document.querySelectorAll(".views button[data-view]");
     var tilesDrawn = false;
 
     function renderRead() {
@@ -579,6 +588,15 @@
 
     Array.prototype.forEach.call(buttons, function (b) {
       b.addEventListener("click", function () { show(b.getAttribute("data-view")); });
+    });
+
+    // hands you something you have not read, unless you have read everything
+    document.getElementById("pick").addEventListener("click", function () {
+      var pool = POSTS.filter(function (p) { return READ.indexOf(p.u) === -1; });
+      if (!pool.length) pool = POSTS;
+      var p = pool[Math.floor(Math.random() * pool.length)];
+      markRead(p.u);
+      location.href = p.u;
     });
 
     var saved;
