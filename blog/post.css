@@ -306,6 +306,24 @@ s { text-decoration-thickness: 1px; color: var(--soft); }
   .lede, .fragments p { font-size: 1.12rem; }
 }
 
+/* a drawing closes the pieces that have one: a tailpiece, the way a poetry
+   book sets one at the foot of a poem. light enough not to argue with the
+   writing above it. */
+.drawing {
+  display: block;
+  width: 190px;
+  margin: 64px auto 0;
+  color: #cccccc;
+}
+
+.drawing svg { width: 100%; height: auto; display: block; }
+
+.dedication .drawing { color: #efc3d8; }
+
+@media (max-width: 620px) {
+  .drawing { width: 150px; margin-top: 48px; }
+}
+
 /* 117 */
 .mark {
   position: fixed;
