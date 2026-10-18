@@ -298,6 +298,23 @@ article a.secret:hover {
 b, strong { font-weight: bold; }
 s { text-decoration-thickness: 1px; color: var(--soft); }
 
+/* a photograph of the room a piece was written in. It runs the full width
+   of the window, wider than the words, and carries no caption -- the piece
+   is the caption. */
+.room {
+  width: 100vw;
+  margin: 76px 0 76px calc(50% - 50vw);
+}
+
+.room img { display: block; width: 100%; height: auto; }
+
+/* 100vw is wider than the page when a scrollbar is showing */
+body { overflow-x: clip; }
+
+@media (max-width: 620px) {
+  .room { margin-top: 52px; margin-bottom: 52px; }
+}
+
 /* an addition written later, set apart rather than merged in */
 .update {
   margin-top: 56px;
