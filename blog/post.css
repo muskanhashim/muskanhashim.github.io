@@ -122,8 +122,10 @@ p {
   margin-bottom: 1.35em;
 }
 
-/* the opening line carries the piece, so it is set a shade larger */
-.lede { font-size: 1.2rem; line-height: 1.68; }
+/* the opening line carries the piece, so it is set a shade larger. Its
+   lines are balanced so the sentence never drops its last two words
+   onto a line of their own. */
+.lede { font-size: 1.2rem; line-height: 1.68; text-wrap: balance; }
 
 /* opening word, alone on its line */
 .versal {
