@@ -426,6 +426,14 @@ article .update p { font-size: 1rem; }
 .letter { --measure: 56ch; }
 .letter p { line-height: 1.95; }
 
+/* the line added after the letter is already signed off: a step back from
+   it, and said lighter than the rest */
+.ps {
+  margin-top: 2.6em;
+  font-size: 0.95rem;
+  color: var(--soft);
+}
+
 /* a dedication is not the first paragraph of the essay, it is a threshold */
 .dedication p:first-of-type {
   font-size: 1.04rem;
